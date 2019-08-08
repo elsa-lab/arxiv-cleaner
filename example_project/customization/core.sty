@@ -1,0 +1,107 @@
+% Customization core package
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{customization/core}[2019/08/08 Customization core package (example for latex-tools)]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Use Core Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## atbegshi – Execute stuff at \shipout time
+%
+% This package is used for defining commands that will be executed when a page is shipped out.
+
+\RequirePackage{atbegshi}
+
+%------------------------------------------------------------------------------
+
+% ## etoolbox – e-TEX tools for LATEX
+%
+% This package is used for providing conditional variables for internal usage.
+%
+% CTAN: https://ctan.org/pkg/etoolbox
+
+\RequirePackage{etoolbox}
+
+%------------------------------------------------------------------------------
+
+% ## pgf – Create PostScript and PDF graphics in TEX
+%
+% This package is used for adding draft mode reminder text. But the user can also use it to draw figures.
+
+\RequirePackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Add Variables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ## Add Draft Mode Variable
+
+% Add a variable
+\newbool{draftmode}
+
+% Set default value
+\boolfalse{draftmode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Declare Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Option "draft" turns on the draft mode.
+% A boolean variable `draftmode` is set to true.
+\DeclareOption{draft}{
+    \booltrue{draftmode}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Process Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Customize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Check whether the draft mode is on
+\ifbool{draftmode}{
+    % Draft mode is on
+
+    % ## Add draft Mode Warning
+    %
+    % Show the draft mode warning to remind user the draft mode is on.
+
+    \PackageWarning{customization/core.sty}{Draft mode is on.}
+
+    %------------------------------------------------------------------------------
+
+    % ## Add reminder text
+    %
+    % Add a reminder text "Draft Mode" at the top of each page to remind user the draft mode is on.
+    %
+    % References:
+    % https://tex.stackexchange.com/a/348935
+    % https://tex.stackexchange.com/a/73944
+
+    \AtBeginShipout{
+        \AtBeginShipoutAddToBox{
+            \begin{tikzpicture}[overlay,remember picture]
+            \node[anchor=north,font=\Huge,text=red!25] at (current page.north) {Draft Mode};
+            \end{tikzpicture}
+        }
+    }
+
+}{
+    % Draft mode is off
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% # Include Other Customization Files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOTE: For a complete list of customization packages, please log in the ELSA LaTeX website.
+
+\input{customization/algorithms.tex}
+\input{customization/appendix.tex}
+\input{customization/cross_referencing.tex}
+\input{customization/floats.tex}

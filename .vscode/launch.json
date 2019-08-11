@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "clean (example_project)",
+            "type": "python",
+            "request": "launch",
+            "module": "latex_tools.clean",
+            "console": "integratedTerminal",
+            "args": [
+                "--input",
+                "example_project",
+                "--output",
+                "cleaned_project",
+                "--keep",
+                "main.tex,sup.tex",
+                "--verbose"
+            ]
+        }
+    ]
+}

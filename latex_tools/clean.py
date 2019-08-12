@@ -188,8 +188,8 @@ class Cleaner:
         # Log the start
         self.logger.info('Start copying expanded files to output directory')
 
-        # Copy the files from the expanded directory to output directory and skip
-        # any nonexistent dependency file
+        # Copy the files from the expanded directory to output directory and
+        # skip any nonexistent dependency file
         copy_files(project_deps, expanded_dir,
                    self.output_dir, skip_nonexistent=True)
 
@@ -245,8 +245,8 @@ class Cleaner:
 
             # Check whether the file exists
             if not does_file_exist(full_path):
-                raise ValueError(('File to keep "{}" does not exist in the input' +
-                                  ' directory "{}"').format(
+                raise ValueError(('File to keep "{}" does not exist in the' +
+                                  ' input directory "{}"').format(
                     file_to_keep, self.input_dir))
 
 

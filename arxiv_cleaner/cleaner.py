@@ -1,8 +1,8 @@
-from latex_tools.file_utils import (
+from arxiv_cleaner.file_utils import (
     build_relative_path, calc_file_hash, combine_paths, copy_files,
     create_temp_dir, does_file_exist, find_files, remove_temp_dir)
-from latex_tools.latex import LatexRunner
-from latex_tools.logger import Logger
+from arxiv_cleaner.latex import LatexRunner
+from arxiv_cleaner.logger import Logger
 
 
 class Cleaner:

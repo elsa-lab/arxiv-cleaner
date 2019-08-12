@@ -8,7 +8,7 @@
             "name": "main (example_elsa)",
             "type": "python",
             "request": "launch",
-            "module": "latex_tools.main",
+            "module": "arxiv_cleaner.main",
             "console": "integratedTerminal",
             "args": [
                 "--input",
@@ -24,7 +24,7 @@
             "name": "main (example_preprints)",
             "type": "python",
             "request": "launch",
-            "module": "latex_tools.main",
+            "module": "arxiv_cleaner.main",
             "console": "integratedTerminal",
             "args": [
                 "--input",

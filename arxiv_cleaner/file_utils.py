@@ -101,7 +101,7 @@ def create_temp_dir(name=''):
     # Create a temporary directory
     try:
         dir_obj = tempfile.TemporaryDirectory(
-            prefix='latex_tools.', suffix=suffix)
+            prefix='arxiv_cleaner.', suffix=suffix)
     except:
         raise ValueError('Failed to create temporary directory')
 
@@ -120,7 +120,7 @@ def create_temp_file(name=''):
     try:
         # Create a named temporary file
         fp = tempfile.NamedTemporaryFile(
-            delete=False, prefix='latex_tools.', suffix=suffix)
+            delete=False, prefix='arxiv_cleaner.', suffix=suffix)
     except:
         raise ValueError('Failed to create temporary file')
 

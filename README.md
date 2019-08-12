@@ -1,4 +1,4 @@
-# LaTeX Tools
+# arXiv Cleaner
 
 Clean LaTeX project for submitting to arXiv.
 
@@ -24,12 +24,12 @@ See the difference between `example_elsa/` and `example_elsa_cleaned/`.
 
 1. Clone this Git project to your computer
 2. Open a terminal window to the Git project directory
-3. Run the main program `latex_tools.main` with arguments described as follows
+3. Run the main program `arxiv_cleaner.main` with arguments described as follows
 
 Specify the input directory containing the LaTeX project, the output directory and the TEX files you want to keep (relative paths in the input directory)
 
 ```bash
-python -m latex_tools.main --input=<Input directory> --output=<Output directory> --tex=<TEX files to keep>
+python -m arxiv_cleaner.main --input=<Input directory> --output=<Output directory> --tex=<TEX files to keep>
 ```
 
 ## Examples
@@ -37,7 +37,7 @@ python -m latex_tools.main --input=<Input directory> --output=<Output directory>
 Try cleaning the example project as follows
 
 ```bash
-python -m latex_tools.main --input=examples_elsa --output=examples_elsa_cleaned --tex=main.tex,sup.tex
+python -m arxiv_cleaner.main --input=examples_elsa --output=examples_elsa_cleaned --tex=main.tex,sup.tex
 ```
 
 ## References

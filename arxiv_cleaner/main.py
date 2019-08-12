@@ -1,5 +1,5 @@
-from latex_tools.arguments import parse_args
-from latex_tools.cleaner import Cleaner
+from arxiv_cleaner.arguments import parse_args
+from arxiv_cleaner.cleaner import Cleaner
 
 
 def main():

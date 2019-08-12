@@ -1,20 +1,16 @@
-from latex_tools.arguments import parse_args
 from latex_tools.file_utils import (
-    build_relative_path, calc_file_hash, combine_paths, copy_file, copy_files,
-    create_temp_dir, does_file_exist, ensure_path_exist, find_files,
-    remove_temp_dir)
+    build_relative_path, calc_file_hash, combine_paths, copy_files,
+    create_temp_dir, does_file_exist, find_files, remove_temp_dir)
 from latex_tools.latex import LatexRunner
 from latex_tools.logger import Logger
 
 
 class Cleaner:
-    def __init__(self, input_dir=None, output_dir=None, tex=None, bib=None,
-                 latex_compiler=None, latex_extra_args=None,
-                 latexpand_extra_args=None, verbose=False):
+    def __init__(self, input_dir=None, output_dir=None, tex=None,
+                 command_options=None, verbose=False):
         # Save the arguments
         self.input_dir = input_dir
         self.output_dir = output_dir
-        self.bib = bib
         self.verbose = verbose
 
         # Initialize the logger
@@ -27,8 +23,11 @@ class Cleaner:
         self._init_tex_files(tex)
 
         # Initialize the latex runner
-        self._init_latex_runner(
-            latex_compiler, latex_extra_args, latexpand_extra_args)
+        self._init_latex_runner(command_options)
+
+    ############################################################################
+    # Cleaning Methods
+    ############################################################################
 
     def clean(self):
         # Log the start
@@ -46,14 +45,21 @@ class Cleaner:
         # Copy the expanded files to the temporary project directory
         self.copy_expanded_files_to_project(expanded_dir, project_dir)
 
-        # Find the dependencies of the TEX files
-        project_deps = self.find_project_dependencies(project_dir)
+        # Compile the TEX files with latex compiler to find the dependencies
+        project_deps = self.compile_tex_to_find_dependencies(project_dir)
+
+        # Compile the TEX files with bibliography compiler to find the
+        # dependencies
+        bbl_deps = self.compile_bib_to_find_dependencies(project_dir)
 
         # Copy the dependency files to the output directory
         self.copy_dependencies_to_output(project_deps)
 
         # Copy the expanded files to the output directory
         self.copy_expanded_files_to_output(project_deps, expanded_dir)
+
+        # Copy the BBL dependencies to the output directory
+        self.copy_bbl_files_to_output(bbl_deps, project_dir)
 
         # Remove the temporary expanded directory
         remove_temp_dir(expanded_dir_obj)
@@ -64,6 +70,10 @@ class Cleaner:
         # Log the finish
         self.logger.info(
             'Check the cleaned project at "{}"'.format(self.output_dir))
+
+    ############################################################################
+    # Steps
+    ############################################################################
 
     def expand_files(self):
         # Log the start
@@ -151,9 +161,9 @@ class Cleaner:
         # Copy the files from the expanded directory to project directory
         copy_files(self.tex_files, expanded_dir, project_dir)
 
-    def find_project_dependencies(self, project_dir):
+    def compile_tex_to_find_dependencies(self, project_dir):
         # Log the start
-        self.logger.info('Start finding project dependencies')
+        self.logger.info('Start compiling latex to find dependencies')
 
         # Convert the relative input paths to set
         relative_input_paths = set(self.relative_input_paths)
@@ -167,7 +177,8 @@ class Cleaner:
             full_path = combine_paths(project_dir, tex_file)
 
             # Run the latex compiler to read the dependencies
-            fls_deps = self.latex_runner.run_compiler(project_dir, full_path)
+            fls_deps = self.latex_runner.run_latex_compiler(
+                project_dir, full_path)
 
             # Find the dependencies in the input directory
             deps = fls_deps.intersection(relative_input_paths)
@@ -177,6 +188,28 @@ class Cleaner:
 
         # Return the project dependencies
         return project_deps
+
+    def compile_bib_to_find_dependencies(self, project_dir):
+        # Log the start
+        self.logger.info('Start compiling bibliography to find dependencies')
+
+        # Initialize the BBL dependencies
+        bbl_deps = set()
+
+        # Compile bibliography for each TEX file
+        for tex_file in self.tex_files:
+            # Build the full path
+            full_path = combine_paths(project_dir, tex_file)
+
+            # Run the bibliography compiler to read the BBL dependencies
+            deps = self.latex_runner.run_bib_compiler(
+                project_dir, full_path)
+
+            # Add the dependencies to the project dependencies
+            bbl_deps.update(deps)
+
+        # Return the BBL dependencies
+        return bbl_deps
 
     def copy_dependencies_to_output(self, project_deps):
         # Log the start
@@ -196,6 +229,17 @@ class Cleaner:
 
         # Copy the files from the expanded directory to output directory
         copy_files(self.tex_files, expanded_dir, self.output_dir)
+
+    def copy_bbl_files_to_output(self, bbl_deps, project_dir):
+        # Log the start
+        self.logger.info('Start copying BBL files to output directory')
+
+        # Copy the files from the project directory to output directory
+        copy_files(bbl_deps, project_dir, self.output_dir)
+
+    ############################################################################
+    # Calculation
+    ############################################################################
 
     def calc_files_hashes(self, files, root_dir):
         # Build relative paths
@@ -232,11 +276,9 @@ class Cleaner:
         # Check whether the TEX files exist
         self._check_tex_files()
 
-    def _init_latex_runner(
-            self, latex_compiler, latex_extra_args, latexpand_extra_args):
+    def _init_latex_runner(self, command_options):
         # Create a latex runner and save
-        self.latex_runner = LatexRunner(
-            latex_compiler, latex_extra_args, latexpand_extra_args)
+        self.latex_runner = LatexRunner(command_options)
 
     def _check_tex_files(self):
         # Check each TEX file
@@ -249,23 +291,3 @@ class Cleaner:
                 raise ValueError(('TEX file "{}" does not exist in the input' +
                                   ' directory "{}"').format(
                     tex_file, self.input_dir))
-
-
-def main():
-    # Parse the arguments
-    args = parse_args()
-
-    # Create the cleaner
-    cleaner = Cleaner(input_dir=args.input, output_dir=args.output,
-                      tex=args.tex, bib=args.bib,
-                      latex_compiler=args.latex_compiler,
-                      latex_extra_args=args.latex_extra_args,
-                      latexpand_extra_args=args.latexpand_extra_args,
-                      verbose=args.verbose)
-
-    # Run the cleaner
-    cleaner.clean()
-
-
-if __name__ == '__main__':
-    main()

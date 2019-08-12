@@ -15,14 +15,15 @@ def parse_args():
     parser.add_argument('--tex', type=str, required=True,
                         help=('TEX Files to keep (Comma-sepearted paths,' +
                               ' relative to input directory)'))
-    parser.add_argument('--bib', type=str,
-                        help=('BIB file to expand (Relative to input' +
-                              ' directory)'))
     # Commands customization
     parser.add_argument('--latex_compiler', default='pdflatex', type=str,
                         help='LaTeX compiler (pdflatex, latex)')
+    parser.add_argument('--bib_compiler', default='bibtex', type=str,
+                        help='Bibliography compiler (bibtex)')
     parser.add_argument('--latex_extra_args', default='', type=str,
                         help='extra arguments passed to LaTeX compiler')
+    parser.add_argument('--bib_extra_args', default='', type=str,
+                        help='extra arguments passed to bibliography compiler')
     parser.add_argument('--latexpand_extra_args', default='', type=str,
                         help='extra arguments passed to latexpand')
     # Logging

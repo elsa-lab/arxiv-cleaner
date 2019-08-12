@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clean (example_project)",
+            "name": "main (example_project)",
             "type": "python",
             "request": "launch",
-            "module": "latex_tools.clean",
+            "module": "latex_tools.main",
             "console": "integratedTerminal",
             "args": [
                 "--input",

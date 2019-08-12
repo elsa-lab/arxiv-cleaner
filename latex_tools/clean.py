@@ -30,6 +30,9 @@ class Cleaner:
             latex_compiler, latex_extra_args, latexpand_extra_args)
 
     def clean(self):
+        # Log the start
+        self.logger.info('Start cleaning')
+
         # Expand the files
         expanded_dir_obj, expanded_dir = self.expand_files()
 

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 \ProvidesClass{IEEEtran}[2015/08/26 V1.8b by Michael Shell]
 \typeout{-- See the "IEEEtran_HOWTO" manual for usage information.}
 \typeout{-- http://www.michaelshell.org/tex/ieeetran/}
@@ -12,13 +6,10 @@
 \def\IEEEtransversionmajor{1}
 \def\IEEEtransversionminor{8}
 
-
 \def\@IEEEclspkgerror{\ClassError{IEEEtran}}
-
 
 \newif\if@restonecol
 \newif\if@titlepage
-
 
 \newif\ifCLASSOPTIONonecolumn       \CLASSOPTIONonecolumnfalse
 \newif\ifCLASSOPTIONtwocolumn       \CLASSOPTIONtwocolumntrue
@@ -48,15 +39,10 @@
 
 \newif\ifCLASSOPTIONromanappendices \CLASSOPTIONromanappendicesfalse
 
-
-
-
 \newif\ifCLASSINFOpdf               \CLASSINFOpdffalse
-
 
 \newif\if@IEEEusingAfourpaper       \@IEEEusingAfourpaperfalse
 \newif\if@IEEEusingcspaper          \@IEEEusingcspaperfalse
-
 
 \newdimen\@IEEEtrantmpdimenA
 \newdimen\@IEEEtrantmpdimenB
@@ -72,12 +58,9 @@
 \DeclareOption{11pt}{\def\CLASSOPTIONpt{11}\def\@ptsize{1}}
 \DeclareOption{12pt}{\def\CLASSOPTIONpt{12}\def\@ptsize{2}}
 
-
-
 \DeclareOption{letterpaper}{\setlength{\paperwidth}{8.5in}\setlength{\paperheight}{11in}\@IEEEusingAfourpaperfalse
                             \@IEEEusingcspaperfalse
                             \def\CLASSOPTIONpaper{letter}\def\CLASSINFOpaperwidth{8.5in}\def\CLASSINFOpaperheight{11in}}
-
 
 \DeclareOption{a4paper}{\setlength{\paperwidth}{210mm}\setlength{\paperheight}{297mm}\@IEEEusingAfourpapertrue
                         \@IEEEusingcspaperfalse
@@ -131,13 +114,8 @@
 
 \DeclareOption{romanappendices}{\CLASSOPTIONromanappendicestrue}
 
-
 \ExecuteOptions{letterpaper,10pt,twocolumn,oneside,final,journal}
 \ProcessOptions
-
-
-
-
 
 \def\IEEEnormalcatcodespunct{\catcode`\!=12 \catcode`\,=12 \catcode`\:=12
 \catcode`\;=12 \catcode`\`=12 \catcode`\'=12 \catcode`\"=12 \catcode`\.=12
@@ -148,7 +126,6 @@
 \catcode`\3=12 \catcode`\4=12 \catcode`\5=12 \catcode`\6=12 \catcode`\7=12
 \catcode`\8=12 \catcode`\9=12}
 \def\IEEEnormalcatcodes{\IEEEnormalcatcodespunct\IEEEnormalcatcodesnum}
-
 
 \def\@IEEEextracttoken{\@ifstar{\let\@IEEEextracttokendef=\def\@@IEEEextracttoken}{\let\@IEEEextracttokendef=\edef\@@IEEEextracttoken}}
 
@@ -171,14 +148,10 @@
 \@IEEEextractedtokensdiscarded\expandafter\expandafter\expandafter
 {\expandafter\@@IEEEextractedtokensdiscarded\@IEEEextractedtokensdiscarded}}
 
-
-
-
 \long\def\@IEEEcompsoconly#1{\relax\ifCLASSOPTIONcompsoc\relax#1\relax\fi\relax}
 \long\def\@IEEEnotcompsoconly#1{\relax\ifCLASSOPTIONcompsoc\else\relax#1\relax\fi\relax}
 \long\def\@IEEEcompsocconfonly#1{\relax\ifCLASSOPTIONcompsoc\ifCLASSOPTIONconference\relax#1\relax\fi\fi\relax}
 \long\def\@IEEEcompsocnotconfonly#1{\relax\ifCLASSOPTIONcompsoc\ifCLASSOPTIONconference\else\relax#1\relax\fi\fi\relax}
-
 
 \def\@IEEEcomsocverifymathfont{\typeout{-- Verifying Times compatible math font.}\relax
   \@ifpackageloaded{newtxmath}{\typeout{-- newtxmath loaded, OK.}}{\@@IEEEcomsocverifymathfont}}
@@ -193,13 +166,10 @@
 \def\@@@@IEEEcomsocenforcemathfont{\IfFileExists{mathtime.sty}{\typeout{-- Found mathtime, loading.}\RequirePackage{mathtime}}{\@@@@@IEEEcomsocenforcemathfont}}
 \def\@@@@@IEEEcomsocenforcemathfont{\typeout{** No Times compatible math font package found. newtxmath is required.}\RequirePackage{newtxmath}}
 
-
 \ifCLASSOPTIONcomsoc
 \PassOptionsToPackage{cmintegrals}{newtxmath}
 \AtBeginDocument{\@IEEEcomsocverifymathfont}
 \fi
-
-
 
 \renewcommand{\sfdefault}{phv}
 \renewcommand{\rmdefault}{ptm}
@@ -209,7 +179,6 @@
 
 \normalfont\selectfont
 
-
 \ifCLASSOPTIONcomsoc
   \typeout{-- Using IEEE Communications Society mode.}
 \fi
@@ -218,15 +187,11 @@
   \typeout{-- Using IEEE Computer Society mode.}
 \fi
 
-
 \def\@IEEEconsolenoticeconference{\typeout{}\typeout{** Conference Paper **}\typeout{Before submitting the final camera ready copy, remember to:}\typeout{}\typeout{ 1. Manually equalize the lengths of two columns on the last page}\typeout{ of your paper;}\typeout{}\typeout{ 2. Ensure that any PostScript and/or PDF output post-processing}\typeout{ uses only Type 1 fonts and that every step in the generation}\typeout{ process uses the appropriate paper size.}\typeout{}}
-
 
 \AtEndDocument{\ifCLASSOPTIONconference\@IEEEconsolenoticeconference\fi}
 
-
 \ifCLASSOPTIONtwocolumn\else \ifCLASSOPTIONdraftcls\else \typeout{** ATTENTION: Single column mode is not typically used with IEEE publications.}\fi \fi
-
 
 {\@ifundefined{pdfoutput}{\AtBeginDvi{\special{papersize=\CLASSINFOpaperwidth,\CLASSINFOpaperheight}}}{\@ifundefined{pdfpageheight}{\relax}{\global\pdfpagewidth\paperwidth
 \global\pdfpageheight\paperheight}\ifcase\pdfoutput
@@ -243,27 +208,13 @@
 \typeout{-- Using DVI output.}
 \fi
 
-
-
-
-
-
 \def\@IEEEptsizenine{9}
 \def\@IEEEptsizeten{10}
 \def\@IEEEptsizeeleven{11}
 \def\@IEEEptsizetwelve{12}
 
-
-
-
-
 \newdimen\@IEEEnormalsizeunitybaselineskip
 \@IEEEnormalsizeunitybaselineskip\baselineskip
-
-
-
-
-
 
 \ifx\CLASSOPTIONpt\@IEEEptsizenine
 \typeout{-- This is a 9 point document.}
@@ -345,8 +296,6 @@
 \def\huge{\@setfontsize{\huge}{22}{26pt}}
 \def\Huge{\@setfontsize{\Huge}{24}{28pt}}
 \fi
-
-
 
 \ifCLASSOPTIONcompsoc
 \ifx\CLASSOPTIONpt\@IEEEptsizenine
@@ -499,14 +448,9 @@
 \fi
 \fi\fi
 
-
-
-
 \def\fontsubfuzz{1.7bp}
 
-
 \ifCLASSOPTIONtechnote \ifx\CLASSOPTIONpt\@IEEEptsizenine\else \typeout{** ATTENTION: Technotes are normally 9pt documents.}\fi \fi
-
 
 \def\@IEEEstringptm{ptm} \def\@IEEEstringppl{ppl} \def\@IEEEstringphv{phv} \def\@IEEEstringpcr{pcr} \def\@IEEEstringcmtt{cmtt} \DeclareTextCommandDefault{\textunderscore}{\leavevmode
 \ifx\f@family\@IEEEstringpcr\string_\else
@@ -516,13 +460,9 @@
 \ifx\f@family\@IEEEstringphv\kern -0.03em\vbox{\hrule\@width 0.62em\@height 0.52pt\kern -0.33ex}\kern -0.03em\else
 \kern 0.09em\vbox{\hrule\@width 0.6em\@height 0.44pt\kern -0.63pt\kern -0.42ex}\kern 0.09em\fi\fi\fi\fi\fi\relax}
 
-
-
-
 \def\baselinestretch{1}
 \ifCLASSOPTIONdraftcls
   \def\baselinestretch{1.5}\fi 
-
 
 \ifx\CLASSINPUTbaselinestretch\@IEEEundefined
 \else
@@ -531,9 +471,6 @@
 \fi
 
 \small\normalsize 
-
-
-
 
 \newdimen\CLASSINFOnormalsizebaselineskip
 \CLASSINFOnormalsizebaselineskip=\baselineskip\relax
@@ -544,11 +481,6 @@
 
 \jot=\IEEEnormaljot\relax
 
-
-
-
-
-
 \def\@IEEEinterspaceratioM{0.35}
 \def\@IEEEinterspaceMINratioM{0.23}
 \def\@IEEEinterspaceMAXratioM{0.50}
@@ -556,7 +488,6 @@
 \def\@IEEEinterspaceratioB{0.375}
 \def\@IEEEinterspaceMINratioB{0.23}
 \def\@IEEEinterspaceMAXratioB{0.55}
-
 
 \ifCLASSOPTIONcompsoc
 \ifCLASSOPTIONconference\else
@@ -567,7 +498,6 @@
 \def\@IEEEinterspaceMINratioB{0.21}
 \def\@IEEEinterspaceMAXratioB{0.52}
 \fi\fi
-
 
 \def\@@@IEEEsetfontdimens#1#2#3{{\setlength{\@IEEEtrantmpdimenB}{\f@size pt}\setlength{\@IEEEtrantmpdimenA}{#1\@IEEEtrantmpdimenB}\fontdimen2\font=\@IEEEtrantmpdimenA\relax
 \addtolength{\@IEEEtrantmpdimenA}{-#2\@IEEEtrantmpdimenB}\fontdimen3\font=-\@IEEEtrantmpdimenA\relax
@@ -601,16 +531,8 @@
 
 \AtBeginDocument{\ifCLASSOPTIONnofonttune\else\@IEEEtunefonts\fi}
 
-
-
-
-
-
-
 \def\IEEEdefaultsampletext{\normalfont\normalsize gT}
 \def\IEEEdefaultheadersampletext{\normalfont\scriptsize T}\def\IEEEdefaultfootersampletext{\normalfont\scriptsize gT}
-
-
 
 \def\IEEEsettextwidth#1#2{\@IEEEtrantmpdimenA\paperwidth
 \@IEEEtrantmpdimenB#1\relax
@@ -618,8 +540,6 @@
 \@IEEEtrantmpdimenB#2\relax
 \advance\@IEEEtrantmpdimenA by -\@IEEEtrantmpdimenB
 \textwidth\@IEEEtrantmpdimenA}
-
-
 
 \def\IEEEsetsidemargin#1#2{\@IEEEtrantmpdimenA #2\relax
 \@IEEEextracttoken{#1}\relax
@@ -664,8 +584,6 @@
 \advance\evensidemargin -2in\relax
 \fi}
 
-
-
 \def\IEEEsettextheight{\@ifnextchar [{\@IEEEsettextheight}{\@IEEEsettextheight[\IEEEdefaultsampletext]}}
 \def\@IEEEsettextheight[#1]#2#3{\textheight\paperheight\relax
   \@IEEEtrantmpdimenA #2\relax
@@ -674,8 +592,6 @@
   \advance \textheight by -\@IEEEtrantmpdimenA
   \settodepth{\@IEEEtrantmpdimenA}{\begingroup #1\relax\relax\relax\endgroup}\relax
   \advance \textheight by -\@IEEEtrantmpdimenA}
-
-
 
 \newdimen\IEEEquantizedlength
 \IEEEquantizedlength 0sp\relax
@@ -742,8 +658,6 @@
 \expandafter\IEEEquantizedlengthdiff\@IEEEquantizedlengthdiffmacro sp\relax
 \edef\IEEEquantizedlengthint{\@IEEEquantizedlengthintmacro}\relax}
 
-
-
 \newdimen\IEEEquantizedtextheightdiff
 \IEEEquantizedtextheightdiff 0sp\relax
 
@@ -764,8 +678,6 @@
 \textheight\@IEEEquantizedtextheightmacro sp\relax
 \IEEEquantizedtextheightdiff\@IEEEquantizedtextheightdiffmacro sp\relax
 \edef\IEEEquantizedtextheightlpc{\@IEEEquantizedtextheightlpcmacro}}
-
-
 
 \def\IEEEsettopmargin{\@ifnextchar [{\@IEEEsettopmargin}{\@IEEEsettopmargin[\IEEEdefaultsampletext]}}
 \def\@IEEEsettopmargin[#1]#2#3{\@IEEEtrantmpdimenA #3\relax
@@ -822,8 +734,6 @@
 \advance \topmargin by -\headsep
 \fi\fi }
 
-
-
 \def\IEEEsetheadermargin{\@ifnextchar [{\@IEEEsetheadermargin}{\@IEEEsetheadermargin[\IEEEdefaultheadersampletext]}}
 \def\@IEEEsetheadermargin[#1]{\@ifnextchar [{\@@IEEEsetheadermargin[#1]}{\@@IEEEsetheadermargin[#1][\IEEEdefaultsampletext]}}
 \def\@@IEEEsetheadermargin[#1][#2]#3#4{\@IEEEtrantmpdimenA #4\relax
@@ -877,8 +787,6 @@
 \fi\fi \fi \advance\topmargin by \@IEEEtrantmpdimenA\relax
 \advance\headsep by -\@IEEEtrantmpdimenA\relax
 }
-
-
 
 \def\IEEEsetfootermargin{\@ifnextchar [{\@IEEEsetfootermargin}{\@IEEEsetfootermargin[\IEEEdefaultfootersampletext]}}
 \def\@IEEEsetfootermargin[#1]{\@ifnextchar [{\@@IEEEsetfootermargin[#1]}{\@@IEEEsetfootermargin[#1][\IEEEdefaultsampletext]}}
@@ -941,12 +849,6 @@
 \fi\fi \fi \advance\footskip by \@IEEEtrantmpdimenA\relax
 }
 
-
-
-
-
-
-
 \hyphenpenalty=750
 \ifCLASSOPTIONcompsoc
 \hyphenpenalty 500
@@ -958,11 +860,9 @@
 
 \clubpenalty=1000          \widowpenalty=1000         \displaywidowpenalty=1000 
 
-
 \marginparsep      10pt
 \marginparwidth    20pt
 \marginparpush     25pt
-
 
 \lineskip            0pt
 \normallineskip      0pt
@@ -982,7 +882,6 @@
 \headsep      18pt
 \topskip=\@IEEEnormalsizeunitybaselineskip
 
-
 \maxdepth=0.5\@IEEEnormalsizeunitybaselineskip
 \textheight       58pc  
 
@@ -990,19 +889,16 @@
 \IEEEquantizetextheight{c}
 \IEEEsettopmargin{q}{0sp}
 
-
 \columnsep         1pc
 \textwidth        43pc   
 
 \IEEEsetsidemargin{c}{0pt}
-
 
 \ifCLASSOPTIONconference
  \textheight        9.25in \IEEEsettopmargin{t}{0.75in}
 \IEEEquantizetextheight{c}
 \IEEEsettopmargin{q}{0sp}
 \fi
-
 
 \ifCLASSOPTIONcompsoc
  \columnsep         12bp
@@ -1030,8 +926,6 @@
  \fi
 \fi
 
-
-
 \ifCLASSOPTIONdraftcls
 \IEEEsettextwidth{1in}{1in}
   \IEEEsetsidemargin{c}{0pt}
@@ -1040,8 +934,6 @@
 \IEEEquantizetextheight{c}
 \IEEEsettopmargin{q}{0sp}
 \fi
-
-
 
 \ifx\CLASSINPUTinnersidemargin\@IEEEundefined
 \else
@@ -1061,8 +953,6 @@
            outer side margin to \CLASSINPUToutersidemargin\space via \string\CLASSINPUT.}
 \fi
 
-
-
 \ifx\CLASSINPUTtoptextmargin\@IEEEundefined
 \else
   \ifx\CLASSINPUTbottomtextmargin\@IEEEundefined
@@ -1081,8 +971,6 @@
            bottom text margin to \CLASSINPUTbottomtextmargin\space via \string\CLASSINPUT.}
 \fi
 
-
-
 \IEEEsetheadermargin{c}{0pt}
 \IEEEsetfootermargin{c}{0pt}
 
@@ -1092,7 +980,6 @@
     \IEEEsetfootermargin{t}{\@IEEEnormalsizeunitybaselineskip}
   \fi
 \fi
-
 
 \def\IEEEdisplayinfolinespercolumn{\@IEEEtrantmpdimenA=\textheight
 \advance\@IEEEtrantmpdimenA by -1\topskip
@@ -1112,10 +999,6 @@
 \fi
 \typeout{-- Lines per column: \@IEEEnumlinespercolumninfotxt\space (\@IEEEnumlinespercolumnexactinfotxt).}}
 \AtBeginDocument{\IEEEdisplayinfolinespercolumn}
-
-
-
-
 
 \topsep           0.5\baselineskip
 
@@ -1138,7 +1021,6 @@
 \labelsep         0.5em 
 \labelwidth         \z@
 
-
 \def\@listi{\leftmargin\leftmargini \topsep 2pt plus 1pt minus 1pt}
 \let\@listI\@listi
 \def\@listii{\leftmargin\leftmarginii\labelwidth\leftmarginii \advance\labelwidth-\labelsep \topsep 2pt}
@@ -1146,7 +1028,6 @@
 \def\@listiv{\leftmargin\leftmarginiv\labelwidth\leftmarginiv \advance\labelwidth-\labelsep \topsep 2pt}
 \def\@listv{\leftmargin\leftmarginv\labelwidth\leftmarginv \advance\labelwidth-\labelsep \topsep 2pt}
 \def\@listvi{\leftmargin\leftmarginvi\labelwidth\leftmarginvi \advance\labelwidth-\labelsep \topsep 2pt}
-
 
 \def\labelenumi{\theenumi)}     \def\theenumi{\arabic{enumi}}
 
@@ -1165,8 +1046,6 @@
 \def\labelitemiii{$\ast$}
 \def\labelitemiv{$\cdot$}
 
-
-
 \newdimen\IEEEilabelindentA
 \IEEEilabelindentA \parindent
 
@@ -1174,7 +1053,6 @@
 \IEEEilabelindentB 1.3\parindent
 \newdimen\IEEEilabelindent
 \IEEEilabelindent \IEEEilabelindentA
-
 
 \newdimen\IEEEelabelindent
 \IEEEelabelindent \parindent
@@ -1200,7 +1078,6 @@
 \newskip\IEEEiedtopsep
 \IEEEiedtopsep 2pt plus 1pt minus 1pt
 
-
 \def\IEEEiedlistdecl{\relax}
 
 \def\IEEEcalcleftmargin#1{\setlength{\leftmargin}{#1}\addtolength{\leftmargin}{\labelwidth}\addtolength{\leftmargin}{\labelsep}}
@@ -1215,19 +1092,13 @@
 \newif\ifIEEEnolabelindentfactor
 \IEEEnolabelindentfactorfalse
 
-
 \def\@IEEEiedjustify{0}
 
-
 \def\IEEEiedlabeljustifyl{\def\@IEEEiedjustify{0}}\def\IEEEiedlabeljustifyc{\def\@IEEEiedjustify{1}}\def\IEEEiedlabeljustifyr{\def\@IEEEiedjustify{2}}
-
-
-
 
 \def\@IEEEsavelistparams{\edef\@IEEEiedtopsep{\the\topsep}\edef\@IEEEiedlabelwidth{\the\labelwidth}\edef\@IEEEiedlabelsep{\the\labelsep}\edef\@IEEEiedleftmargin{\the\leftmargin}\edef\@IEEEiedpartopsep{\the\partopsep}\edef\@IEEEiedparsep{\the\parsep}\edef\@IEEEieditemsep{\the\itemsep}\edef\@IEEEiedrightmargin{\the\rightmargin}\edef\@IEEEiedlistparindent{\the\listparindent}\edef\@IEEEieditemindent{\the\itemindent}}
 
 \def\@IEEErestorelistparams{\topsep\@IEEEiedtopsep\relax \labelwidth\@IEEEiedlabelwidth\relax \labelsep\@IEEEiedlabelsep\relax \leftmargin\@IEEEiedleftmargin\relax \partopsep\@IEEEiedpartopsep\relax \parsep\@IEEEiedparsep\relax \itemsep\@IEEEieditemsep\relax \rightmargin\@IEEEiedrightmargin\relax \listparindent\@IEEEiedlistparindent\relax \itemindent\@IEEEieditemindent\relax}
-
 
 \let\LaTeXitemize\itemize
 \let\endLaTeXitemize\enditemize
@@ -1240,7 +1111,6 @@
                {\endlist}
 \newcommand*\descriptionlabel[1]{\hspace\labelsep
                                  \normalfont\bfseries #1}
-
 
 \def\itemize{\@IEEEitemize}
 \def\enditemize{\@endIEEEitemize}
@@ -1256,7 +1126,6 @@
 \def\IEEEdescription{\@IEEEdescription}
 \def\endIEEEdescription{\@endIEEEdescription}
 
-
 \def\@IEEEitemize{\@ifnextchar[{\@@IEEEitemize}{\@@IEEEitemize[\relax]}}
 \def\@IEEEenumerate{\@ifnextchar[{\@@IEEEenumerate}{\@@IEEEenumerate[\relax]}}
 \def\@IEEEdescription{\@ifnextchar[{\@@IEEEdescription}{\@@IEEEdescription[\relax]}}
@@ -1264,12 +1133,9 @@
 \def\@endIEEEenumerate{\endlist}
 \def\@endIEEEdescription{\endlist}
 
-
 \def\@@IEEEitemize[#1]{\ifnum\@itemdepth>3\relax\@toodeep\else \ifnum\@listdepth>5\relax\@toodeep\else \advance\@itemdepth\@ne \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}\advance\@listdepth\@ne \edef\IEEElabelindentfactor{\csname IEEElabelindentfactor\romannumeral\the\@listdepth\endcsname}\advance\@listdepth-\@ne \def\@IEEEiedjustify{2}\IEEEnocalcleftmarginfalse \IEEEnolabelindentfactorfalse \topsep\IEEEiedtopsep \IEEElabelindent\IEEEilabelindent \labelsep\IEEEiednormlabelsep \partopsep 0ex\parsep 0ex\itemsep 0ex\rightmargin 0em\listparindent 0em\itemindent 0em\settowidth{\labelwidth}{\csname labelitem\romannumeral\the\@itemdepth\endcsname}\@IEEEsavelistparams \list{\csname\@itemitem\endcsname}{\@IEEErestorelistparams \let\makelabel\@IEEEiedmakelabel \IEEEiedlistdecl #1\relax \ifIEEEnolabelindentfactor\relax \else\IEEElabelindent=\IEEElabelindentfactor\IEEElabelindent \fi \ifIEEEnocalcleftmargin\relax \else\IEEEcalcleftmargin{\IEEElabelindent}\fi}\fi\fi}
 
-
 \def\@@IEEEenumerate[#1]{\ifnum\@enumdepth>3\relax\@toodeep\else \ifnum\@listdepth>5\relax\@toodeep\else \advance\@enumdepth\@ne \edef\@enumctr{enum\romannumeral\the\@enumdepth}\advance\@listdepth\@ne \edef\IEEElabelindentfactor{\csname IEEElabelindentfactor\romannumeral\the\@listdepth\endcsname}\advance\@listdepth-\@ne \def\@IEEEiedjustify{2}\IEEEnocalcleftmarginfalse \IEEEnolabelindentfactorfalse \topsep\IEEEiedtopsep \IEEElabelindent\IEEEelabelindent \labelsep\IEEEiednormlabelsep \partopsep 0ex\parsep 0ex\itemsep 0ex\rightmargin 0em\listparindent 0em\itemindent 0em\settowidth{\labelwidth}{9)}\@IEEEsavelistparams \list{\csname label\@enumctr\endcsname}{\usecounter{\@enumctr}\@IEEErestorelistparams \let\makelabel\@IEEEiedmakelabel \IEEEiedlistdecl #1\relax \ifIEEEnolabelindentfactor\relax \else\IEEElabelindent=\IEEElabelindentfactor\IEEElabelindent \fi \ifIEEEnocalcleftmargin\relax \else\IEEEcalcleftmargin{\IEEElabelindent}\fi}\fi\fi}
-
 
 \def\@@IEEEdescription[#1]{\ifnum\@listdepth>5\relax\@toodeep\else \advance\@listdepth\@ne \edef\IEEElabelindentfactor{\csname IEEElabelindentfactor\romannumeral\the\@listdepth\endcsname}\advance\@listdepth-\@ne \def\@IEEEiedjustify{0}\IEEEnocalcleftmarginfalse \IEEEnolabelindentfactorfalse \topsep\IEEEiedtopsep \IEEElabelindent\IEEEdlabelindent \labelsep\IEEEiednormlabelsep \partopsep 0ex\parsep 0ex\itemsep 0ex\rightmargin 0em\listparindent 0em\itemindent 0em\settowidth{\labelwidth}{Hello}\@IEEEsavelistparams \list{}{\@IEEErestorelistparams \let\makelabel\@IEEEiedmakelabel \IEEEiedlistdecl #1\relax \ifIEEEnolabelindentfactor\relax \else\IEEElabelindent=\IEEElabelindentfactor\IEEElabelindent \fi \ifIEEEnocalcleftmargin\relax \else\IEEEcalcleftmargin{\IEEElabelindent}\relax \fi}\fi}
 
@@ -1279,12 +1145,10 @@
 \makebox[\labelwidth][c]{\normalfont #1}\else
 \makebox[\labelwidth][r]{\normalfont #1}\fi\fi}
 
-
 \ifCLASSOPTIONcompsoc
   \IEEEiednormlabelsep 1.2em
   \IEEEiedtopsep 6pt plus 3pt minus 3pt
 \fi
-
 
 \newenvironment{verse}{\let\\=\@centercr
     \list{}{\itemsep\z@ \itemindent -1.5em \listparindent \itemindent
@@ -1295,7 +1159,6 @@
     {\endlist}
 \newenvironment{quote}{\list{}{\rightmargin\leftmargin}\item\relax}
     {\endlist}
-
 
 \def\titlepage{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
     \else \newpage \fi \thispagestyle{empty}\c@page\z@}
@@ -1308,12 +1171,10 @@
 \tabcolsep       6pt
 \tabbingsep      0.5em
 
-
 \skip\footins 0.9\baselineskip  plus 0.4\baselineskip  minus 0.2\baselineskip
 
 {\footnotesize
 \global\footnotesep 0.8\baselineskip}
-
 
 \skip\@mpfootins = \skip\footins
 \fboxsep = 3pt
@@ -1349,7 +1210,6 @@
 \fi
 \@IEEEcompsocconfonly{\setcounter{secnumdepth}{3}}
 
-
 \newcounter{section}
 \newcounter{subsection}[section]
 \newcounter{subsubsection}[subsection]
@@ -1367,7 +1227,6 @@
 
 \@ifundefined{pdfstringdefPreHook}{\let\pdfstringdefPreHook\@empty}{}\g@addto@macro\pdfstringdefPreHook{\let\mbox\relax}
 
-
 \ifCLASSOPTIONcompsoc
   \ifCLASSOPTIONconference \def\thesectiondis{\thesection.}
     \def\thesubsectiondis{\thesectiondis\arabic{subsection}.}
@@ -1382,8 +1241,6 @@
 
 \def\theequationdis{{\normalfont \normalcolor (\theequation)}}\def\theIEEEsubequationdis{{\normalfont \normalcolor (\theIEEEsubequation)}}\def\@eqnnum{\theequationdis}
 
-
-
 \def\contentsname{Contents}
 \def\listfigurename{List of Figures}
 \def\listtablename{List of Tables}
@@ -1397,7 +1254,6 @@
 \def\abstractname{Abstract}
 \def\IEEEkeywordsname{Index Terms}
 \def\IEEEproofname{Proof}
-
 
 \def\@pnumwidth{1.55em}
 \def\@tocrmarg{2.55em}
@@ -1415,7 +1271,6 @@
 \def\listoftables{\section*{\listtablename}\@starttoc{lot}}
 \let\l@table\l@figure
 
-
 \floatsep 0.85\baselineskip plus  0.2\baselineskip minus  0.2\baselineskip
 \textfloatsep 1.55\baselineskip plus  0.2\baselineskip minus  0.4\baselineskip
 \@fptop 0pt plus 1fil
@@ -1430,7 +1285,6 @@
 
 \dbltextfloatsep 1.55\baselineskip plus  0.2\baselineskip minus  0.4\baselineskip
 
-
 \@dblfptop 0pt plus 1fil
 \@dblfpsep 0.75\baselineskip plus 2fil
 \@dblfpbot 0pt plus 1fil
@@ -1443,8 +1297,6 @@
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
 
-
-
 \newlength\abovecaptionskip
 \newlength\belowcaptionskip
 \setlength\abovecaptionskip{0.5\baselineskip}
@@ -1454,17 +1306,13 @@
 \setlength\belowcaptionskip{0pt}
 \def\@IEEEfigurecaptionsepspace{\vskip\abovecaptionskip\relax}\def\@IEEEtablecaptionsepspace{\vskip\abovecaptionskip\relax}
 
-
 \def\@IEEEtablestring{table}
-
 
 \def\@IEEEfiguretopskipspace{\ifdim\prevdepth=-1000pt\relax
 \setlength{\@IEEEtrantmpdimenA}{1\topskip}\relax
 \addtolength{\@IEEEtrantmpdimenA}{-0.7\@IEEEnormalsizeunitybaselineskip}\relax
 \vspace*{\@IEEEtrantmpdimenA}\fi}
 \def\@IEEEtabletopskipstrut{\ifdim\prevdepth=-1000pt\rule{0pt}{\topskip}\fi}
-
-
 
 \ifCLASSOPTIONcompsoc
 \ifCLASSOPTIONconference \long\def\@makecaption#1#2{\ifx\@captype\@IEEEtablestring \footnotesize\bgroup\par\centering\@IEEEtabletopskipstrut{\normalfont\footnotesize {#1.}\nobreakspace\scshape #2}\par\addvspace{0.5\baselineskip}\egroup \@IEEEtablecaptionsepspace
@@ -1482,15 +1330,12 @@
 \setbox\@tempboxa\hbox{\normalfont\footnotesize {#1.}\nobreakspace\nobreakspace #2}\ifdim \wd\@tempboxa >\hsize \setbox\@tempboxa\hbox{\normalfont\footnotesize {#1.}\nobreakspace\nobreakspace}\parbox[t]{\hsize}{\normalfont\footnotesize\noindent\unhbox\@tempboxa#2}\else \ifCLASSOPTIONconference \hbox to\hsize{\normalfont\footnotesize\hfil\box\@tempboxa\hfil}\else \hbox to\hsize{\normalfont\footnotesize\box\@tempboxa\hfil}\fi\fi\fi}
 \fi
 
-
-
 \ifCLASSOPTIONcaptionsoff
 \long\def\@makecaption#1#2{\vspace*{2em}\footnotesize\bgroup\par\addvspace{0.5\baselineskip}\centering{\footnotesize #1}\par\addvspace{0.5\baselineskip}\egroup \let\@IEEEtemporiglabeldefsave\label
 \let\@IEEEtemplabelargsave\relax
 \def\label##1{\gdef\@IEEEtemplabelargsave{##1}}\setbox\@tempboxa\hbox{#2}\let\label\@IEEEtemporiglabeldefsave
 \ifx\@IEEEtemplabelargsave\relax\else\label{\@IEEEtemplabelargsave}\fi}
 \fi
-
 
 \newcounter{figure}
 \def\thefigure{\@arabic\c@figure}
@@ -1518,11 +1363,6 @@
 \@namedef{table*}{\def\@floatboxreset{\reset@font\footnotesize\@setminipage}\@dblfloat{table}}
 \@namedef{endtable*}{\end@dblfloat}
 
-
-
-
-
-
 \def\@IEEEstripouterbraces{\@ifstar{\let\@IEEEstripouterbracesdef=\def\@@IEEEstripouterbraces}{\let\@IEEEstripouterbracesdef=\edef\@@IEEEstripouterbraces}}
 
 \def\@@IEEEstripouterbraces#1{\@IEEEstripouterbracesdef\@IEEEstripouterbracesarg{#1}\relax
@@ -1534,8 +1374,6 @@
 \repeat}
 
 \def\@@@IEEEstripouterbraces#1\@IEEEgeneralsequenceDELIMITER{\def\@IEEEstrippedouterbraces{#1}}
-
-
 
 \def\@IEEEextractgroup{\@ifstar{\let\@IEEEextractgroupdef=\def\@@IEEEextractgroup}{\let\@IEEEextractgroupdef=\edef\@@IEEEextractgroup}}
 
@@ -1550,12 +1388,6 @@
 \def\@IEEEextractgroupremain#1{\def\@IEEEextractedgroup{#1}\expandafter\@@IEEEextractgroupremain\expandafter{\ifnum0=`}\fi}
 
 \def\@@IEEEextractgroupremain#1{\def\@IEEEextractedgroupremain{#1}}
-
-
-
-
-
-
 
 \def\@IEEEextracttokengroups{\@ifstar{\let\@IEEEextracttokengroupsdef=\def\@@IEEEextracttokengroups}{\let\@IEEEextracttokengroupsdef=\edef\@@IEEEextracttokengroups}}
 \def\@@IEEEextracttokengroups#1{\@IEEEextracttokengroupsdef\@IEEEextracttokengroupsarg{#1}\relax
@@ -1577,29 +1409,17 @@
 \expandafter\@IEEEextractgroup\expandafter*\expandafter{\@IEEEextractednextgroup}\relax
 \let\@IEEEextractednextfirstgroup\@IEEEextractedgroup}
 
-
-
-
-
-
-
-
-
-
 \newif\if@IEEEeqnarrayboxnojot \@IEEEeqnarrayboxnojotfalse
 
 \newif\if@advanceIEEEeqncolcnt \@advanceIEEEeqncolcnttrue
 
 \newcount\@IEEEeqnnumcols \newcount\@IEEEeqncolcnt  
 
-
 \def\IEEEeqnarraymathstyle{\displaystyle}
 \def\IEEEeqnarraytextstyle{\relax}
 
 \def\IEEEeqnarraydecl{\relax}
 \def\IEEEeqnarrayboxdecl{\relax}
-
-
 
 \newif\if@IEEEeqnumpersist \@IEEEeqnumpersistfalse
 \newif\if@IEEEsubeqnumpersist \@IEEEsubeqnumpersistfalse
@@ -1609,7 +1429,6 @@
 \newcount\@IEEEsubeqnnumrollback 
 
 \providecommand{\yesnumber}{\global\@eqnswtrue}
-
 
 \def\IEEEyesnumber{\@ifstar{\global\@IEEEeqnumpersisttrue\global\@IEEEsubeqnumpersistfalse\@IEEEyesnumber}{\@IEEEyesnumber}}
 
@@ -1622,7 +1441,6 @@
 
 \def\IEEEnonumber{\@ifstar{\global\@IEEEeqnumpersistfalse\global\@IEEEsubeqnumpersistfalse\global\@eqnswfalse}{\global\@eqnswfalse}}
 
-
 \def\IEEEyessubnumber{\@ifstar{\global\@IEEEsubeqnumpersisttrue\@IEEEyessubnumber}{\@IEEEyessubnumber}}
 \def\@IEEEyessubnumber{\if@IEEEeqnarrayISinner \ifnum\c@IEEEsubequation>0\relax \else \if@IEEEeqnumpreadv \global\advance\c@equation\m@ne\global\c@IEEEsubequation=\@IEEEsubeqnnumrollback\addtocounter{IEEEsubequation}{1}\relax
     \else \setcounter{IEEEsubequation}{1}\relax
@@ -1631,15 +1449,12 @@
   \gdef\@currentHref{\@IEEEtheHrefsubequation}\global\@IEEEeqnumpreadvfalse\global\@IEEEsubeqnumpreadvfalse \global\@eqnswtrue
 \fi}
 
-
 \def\IEEEnosubnumber{\@ifstar{\global\@IEEEsubeqnumpersistfalse\@IEEEnosubnumber}{\@IEEEnosubnumber}}
 \def\@IEEEnosubnumber{\if@IEEEeqnarrayISinner \if@eqnsw \ifnum\c@IEEEsubequation>0\relax\addtocounter{equation}{1}\setcounter{IEEEsubequation}{0}\relax
     \fi
     \global\@IEEEeqnumpreadvfalse\global\@IEEEsubeqnumpreadvfalse \gdef\@currentlabel{\p@equation\theequation}\relax
     \gdef\@currentHref{\@IEEEtheHrefequation}\fi
 \fi}
-
-
 
 \def\IEEEeqnarraynumspace{\hphantom{\ifnum\c@IEEEsubequation>0\relax\theIEEEsubequationdis\else\theequationdis\fi}}
 
@@ -1658,15 +1473,11 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 
 \def\IEEEeqnarrayomit{\omit\if@advanceIEEEeqncolcnt\global\advance\@IEEEeqncolcnt by 1\relax\fi}
 
-
 \def\IEEEeqnarraydefcol#1#2#3{\expandafter\def\csname @IEEEeqnarraycolPRE#1\endcsname{#2}\expandafter\def\csname @IEEEeqnarraycolPOST#1\endcsname{#3}\expandafter\def\csname @IEEEeqnarraycolDEF#1\endcsname{1}}
-
 
 \def\IEEEeqnarraydefcolsep#1#2{\expandafter\def\csname @IEEEeqnarraycolSEP\romannumeral #1\endcsname{#2}\expandafter\def\csname @IEEEeqnarraycolSEPDEF\romannumeral #1\endcsname{1}}
 
-
 \def\@IEEEeqnarraycolisdefined{1}
-
 
 \def\@IEEEappendtoksA#1{\edef\@@IEEEappendtoksA{\@IEEEtrantmptoksA={\the\@IEEEtrantmptoksA #1}}\@@IEEEappendtoksA}
 
@@ -1695,13 +1506,10 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 
 \IEEEeqnarraydefcol{@IEEEdefault}{\hfil$\IEEEeqnarraymathstyle}{$\hfil}
 
-
 \def\@IEEEeqnarraycolSEPzero{0pt plus 0pt minus 0pt}
 \def\@IEEEeqnarraycolSEPcenter{1000pt plus 0pt minus 1000pt}
 
 \edef\@IEEEeqnarraycolSEPdefaultstart{\@IEEEeqnarraycolSEPcenter}\edef\@IEEEeqnarraycolSEPdefaultend{\@IEEEeqnarraycolSEPcenter}\edef\@IEEEeqnarraycolSEPdefaultmid{\@IEEEeqnarraycolSEPzero}
-
-
 
 \newcommand\IEEEeqnarrayvrule[1][\arrayrulewidth]{\vrule\@width#1\relax}
 
@@ -1713,11 +1521,8 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 \def\@IEEEeqnarrayseprowcut[#1]{\relax\@ifnextchar[{\@@IEEEeqnarrayseprowcut[#1]}{\@@IEEEeqnarrayseprowcut[#1][\relax]}}
 \def\@@IEEEeqnarrayseprowcut[#1][#2]{\def\@IEEEeqnarrayseprowARGONE{#1}\ifx\@IEEEeqnarrayseprowARGONE\@empty {\setbox0=\hbox{#2\relax\global\skip5=0.25\normalbaselineskip}}\else {\setbox0=\hbox{#2\relax\global\skip5=#1}}\fi \IEEEeqnarraystrutsize{\skip5}{0pt}[\relax]\relax}
 
-
-
 \def\IEEEeqnarrayrulerow{\multispan{\@IEEEeqnnumcols}\relax \if@advanceIEEEeqncolcnt\global\advance\@IEEEeqncolcnt by \@IEEEeqnnumcols\relax\fi \@ifnextchar[{\@IEEEeqnarrayrulerow}{\@IEEEeqnarrayrulerow[\arrayrulewidth]}}
 \def\@IEEEeqnarrayrulerow[#1]{\leaders\hrule height#1\hfil\relax \IEEEeqnarraystrutsize{0pt}{0pt}[\relax]\relax}
-
 
 \def\IEEEeqnarraydblrulerow{\multispan{\@IEEEeqnnumcols}\relax \if@advanceIEEEeqncolcnt\global\advance\@IEEEeqncolcnt by \@IEEEeqnnumcols\relax\fi \@ifnextchar[{\@IEEEeqnarraydblrulerow}{\@IEEEeqnarraydblrulerow[\arrayrulewidth]}}
 \def\@IEEEeqnarraydblrulerow[#1]{\relax\@ifnextchar[{\@@IEEEeqnarraydblrulerow[#1]}{\@@IEEEeqnarraydblrulerow[#1][\doublerulesep]}}
@@ -1727,11 +1532,7 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 \def\@IEEEeqnarraydblrulerowcut[#1]{\relax\@ifnextchar[{\@@IEEEeqnarraydblrulerowcut[#1]}{\@@IEEEeqnarraydblrulerowcut[#1][\doublerulesep]}}
 \def\@@IEEEeqnarraydblrulerowcut[#1][#2]{\def\@IEEEeqnarraydblrulerowARG{#1}\ifx\@IEEEeqnarraydblrulerowARG\@empty \@IEEEeqnarrayrulerow[\arrayrulewidth]\else \@IEEEeqnarrayrulerow[#1]\fi \def\@IEEEeqnarraydblrulerowARG{#2}\ifx\@IEEEeqnarraydblrulerowARG\@empty \\\IEEEeqnarrayseprowcut[\doublerulesep][\relax]\else \\\IEEEeqnarrayseprowcut[#2][\relax]\fi \\\multispan{\@IEEEeqnnumcols}\if@advanceIEEEeqncolcnt\global\advance\@IEEEeqncolcnt by \@IEEEeqnnumcols\relax\fi \def\@IEEEeqnarraydblrulerowARG{#1}\ifx\@IEEEeqnarraydblrulerowARG\@empty \@IEEEeqnarrayrulerow[\arrayrulewidth]\else \@IEEEeqnarrayrulerow[#1]\fi }
 
-
-
 \def\@IEEEeqnarrayhoptolastcolumn{\@IEEEtrantmptoksA={}\count0=1\relax \loop \ifnum\count0<\@IEEEeqnnumcols\relax \@IEEEappendtoksA{&}\advance\count0 by 1\relax \repeat \the\@IEEEtrantmptoksA }
-
-
 
 \newif\if@IEEEeqnarrayISinner \@IEEEeqnarrayISinnerfalse    
 
@@ -1743,27 +1544,19 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 
 \newif\if@IEEEeqnarrayusemasterstrut \@IEEEeqnarrayusemasterstruttrue     
 
-
-
 \def\@IEEEeqnarraymasterstrutsave{\relax \expandafter\skip0=\@IEEEeqnarrayTHEmasterstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEmasterstrutdepth\relax \dimen0\skip0\relax \dimen2\skip2\relax \edef\@IEEEeqnarrayTHEmasterstrutHSAVE{\the\dimen0}\edef\@IEEEeqnarrayTHEmasterstrutDSAVE{\the\dimen2}}
 
 \def\@IEEEeqnarraymasterstrutrestore{\relax \expandafter\skip0=\@IEEEeqnarrayTHEmasterstrutHSAVE\relax \expandafter\skip2=\@IEEEeqnarrayTHEmasterstrutDSAVE\relax \dimen0\skip0\relax \dimen2\skip2\relax \edef\@IEEEeqnarrayTHEmasterstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEmasterstrutdepth{\the\dimen2}}
 
-
 \def\@IEEEeqnarraystrutreset{\relax \expandafter\skip0=\@IEEEeqnarrayTHEmasterstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEmasterstrutdepth\relax \dimen0\skip0\relax \dimen2\skip2\relax \xdef\@IEEEeqnarrayTHEstrutheight{\the\dimen0}\xdef\@IEEEeqnarrayTHEstrutdepth{\the\dimen2}\global\@IEEEeqnarrayusemasterstruttrue}
 
-
 \def\@IEEEeqnarrayglobalizestrutstatus{\relax \if@IEEEeqnarrayusemasterstrut\else \xdef\@IEEEeqnarrayTHEstrutheight{\@IEEEeqnarrayTHEstrutheight}\xdef\@IEEEeqnarrayTHEstrutdepth{\@IEEEeqnarrayTHEstrutdepth}\global\@IEEEeqnarrayusemasterstrutfalse \fi}
-
-
 
 \def\IEEEeqnarraystrutsize#1#2{\relax\@ifnextchar[{\@IEEEeqnarraystrutsize{#1}{#2}}{\@IEEEeqnarraystrutsize{#1}{#2}[\relax]}}
 \def\@IEEEeqnarraystrutsize#1#2[#3]{\def\@IEEEeqnarraystrutsizeARG{#1}\ifx\@IEEEeqnarraystrutsizeARG\@empty {\setbox0=\hbox{#3\relax\global\skip3=0.7\normalbaselineskip}}\skip0=\skip3\relax \else {\setbox0=\hbox{#3\relax\global\skip3=#1\relax}}\skip0=\skip3\relax \fi \def\@IEEEeqnarraystrutsizeARG{#2}\ifx\@IEEEeqnarraystrutsizeARG\@empty {\setbox0=\hbox{#3\relax\global\skip3=0.3\normalbaselineskip}}\skip2=\skip3\relax \else {\setbox0=\hbox{#3\relax\global\skip3=#2\relax}}\skip2=\skip3\relax \fi \dimen0\skip0\relax \dimen2\skip2\relax \if@IEEEeqnarrayISinner \edef\@IEEEeqnarrayTHEstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEstrutdepth{\the\dimen2}\@IEEEeqnarrayusemasterstrutfalse \else \edef\@IEEEeqnarrayTHEmasterstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEmasterstrutdepth{\the\dimen2}\edef\@IEEEeqnarrayTHEstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEstrutdepth{\the\dimen2}\@IEEEeqnarrayusemasterstruttrue \fi}
 
-
 \def\IEEEeqnarraystrutsizeadd#1#2{\relax\@ifnextchar[{\@IEEEeqnarraystrutsizeadd{#1}{#2}}{\@IEEEeqnarraystrutsizeadd{#1}{#2}[\relax]}}
 \def\@IEEEeqnarraystrutsizeadd#1#2[#3]{\def\@IEEEeqnarraystrutsizearg{#1}\ifx\@IEEEeqnarraystrutsizearg\@empty \skip0=0pt\relax \else {\setbox0=\hbox{#3\relax\global\skip3=#1}}\skip0=\skip3\relax \fi \def\@IEEEeqnarraystrutsizearg{#2}\ifx\@IEEEeqnarraystrutsizearg\@empty \skip2=0pt\relax \else {\setbox0=\hbox{#3\relax\global\skip3=#2}}\skip2=\skip3\relax \fi \dimen0\skip0\relax \dimen2\skip2\relax \if@IEEEeqnarrayISinner \expandafter\skip0=\@IEEEeqnarrayTHEstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEstrutdepth\relax \advance\dimen0 by \skip0\relax \advance\dimen2 by \skip2\relax \edef\@IEEEeqnarrayTHEstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEstrutdepth{\the\dimen2}\@IEEEeqnarrayusemasterstrutfalse \else \expandafter\skip0=\@IEEEeqnarrayTHEmasterstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEmasterstrutdepth\relax \advance\dimen0 by \skip0\relax \advance\dimen2 by \skip2\relax \edef\@IEEEeqnarrayTHEmasterstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEmasterstrutdepth{\the\dimen2}\edef\@IEEEeqnarrayTHEstrutheight{\the\dimen0}\edef\@IEEEeqnarrayTHEstrutdepth{\the\dimen2}\@IEEEeqnarrayusemasterstruttrue \fi}
-
 
 \newif\ifIEEEvisiblestruts
 \IEEEvisiblestrutsfalse
@@ -1771,26 +1564,21 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 \def\@IEEEeqnarrayinsertstrut{\relax \if@IEEEeqnarrayusemasterstrut
 \expandafter\skip0=\@IEEEeqnarrayTHEmasterstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEmasterstrutdepth\relax \else \expandafter\skip0=\@IEEEeqnarrayTHEstrutheight\relax \expandafter\skip2=\@IEEEeqnarrayTHEstrutdepth\relax \fi \dimen0\skip0\relax \dimen2\skip2\relax \ifIEEEvisiblestruts \vrule width0.2pt height\dimen0 depth\dimen2\relax \else \vrule width0pt height\dimen0 depth\dimen2\relax\fi}
 
-
 \def\IEEEstrut{\relax\@ifnextchar[{\@IEEEstrut}{\@IEEEstrut[0.7\normalbaselineskip]}}
 \def\@IEEEstrut[#1]{\relax\@ifnextchar[{\@@IEEEstrut[#1]}{\@@IEEEstrut[#1][0.3\normalbaselineskip]}}
 \def\@@IEEEstrut[#1][#2]{\relax\@ifnextchar[{\@@@IEEEstrut[#1][#2]}{\@@@IEEEstrut[#1][#2][\relax]}}
 \def\@@@IEEEstrut[#1][#2][#3]{\mbox{#3\relax \def\@IEEEstrutARG{#1}\ifx\@IEEEstrutARG\@empty \skip0=0.7\normalbaselineskip\relax \else \skip0=#1\relax \fi \def\@IEEEstrutARG{#2}\ifx\@IEEEstrutARG\@empty \skip2=0.3\normalbaselineskip\relax \else \skip2=#2\relax \fi \dimen0\skip0\relax \dimen2\skip2\relax \ifIEEEvisiblestruts \vrule width0.2pt height\dimen0 depth\dimen2\relax \else \vrule width0.0pt height\dimen0 depth\dimen2\relax\fi}}
 
-
 \def\IEEEeqnarraystrutmode{\IEEEeqnarraystrutsize{0.7\normalbaselineskip}{0.3\normalbaselineskip}[\relax]\baselineskip=0pt\lineskip=0pt\lineskiplimit=0pt\jot=0pt}
-
 
 \def\@IEEEtheHrefequation{equation.\theHequation}
 \def\@IEEEtheHrefsubequation{equation.\theHequation\alph{IEEEsubequation}}
-
 
 \def\IEEEeqnarray{\@IEEEeqnumpersisttrue\@IEEEsubeqnumpersistfalse\@IEEEeqnarray}
 \def\endIEEEeqnarray{\end@IEEEeqnarray}
 
 \@namedef{IEEEeqnarray*}{\@IEEEeqnumpersistfalse\@IEEEsubeqnumpersistfalse\@IEEEeqnarray}
 \@namedef{endIEEEeqnarray*}{\end@IEEEeqnarray}
-
 
 \def\@IEEEeqnarray{\relax\@ifnextchar[{\@@IEEEeqnarray}{\@@IEEEeqnarray[\relax]}}
 \def\@@IEEEeqnarray[#1]{\begingroup\IEEEnormalcatcodes\@@@IEEEeqnarray[#1]}
@@ -1812,7 +1600,6 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 \if@IEEEsubeqnumpreadv\global\advance\c@IEEEsubequation\m@ne\fi
 \if@IEEEeqnumpreadv\global\advance\c@equation\m@ne\global\c@IEEEsubequation=\@IEEEsubeqnnumrollback\fi
 \global\let\@currentlabel\@IEEEcurrentlabelsave \global\let\@currentHref\@IEEEcurrentHrefsave $$\@ignoretrue}
-
 
 \def\@IEEEeqnarraycr{\@IEEEeqnarrayglobalizestrutstatus&{\ifnum0=`}\fi
    \@ifstar{\global\@eqpen\@M\@IEEEeqnarrayYCR
@@ -1851,10 +1638,6 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
     \if@IEEEsubeqnumpersist\global\@eqnswtrue\fi \global\@IEEEeqncolcnt\z@\relax
 \cr}
 
-
-
-
-
 \def\IEEEeqnarrayboxm{\@IEEEeqnarrayboxnojotfalse\@IEEEeqnarrayboxHBOXSWfalse\@IEEEeqnarraybox}
 \def\endIEEEeqnarrayboxm{\end@IEEEeqnarraybox}
 \@namedef{IEEEeqnarrayboxm*}{\@IEEEeqnarrayboxnojottrue\@IEEEeqnarrayboxHBOXSWfalse\@IEEEeqnarraybox}
@@ -1887,26 +1670,19 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 
 \def\end@IEEEeqnarraybox{\@IEEEeqnarrayglobalizestrutstatus &\@IEEEeqnarrayinsertstrut \@IEEEeqnarraymasterstrutrestore \@IEEEeqnarraystrutreset \crcr\egroup\egroup \if@IEEEeqnarrayboxHBOXSW $\egroup\fi}
 
-
-
 \def\@IEEEeqnarrayboxcr{\@IEEEeqnarrayglobalizestrutstatus &\@IEEEeqnarrayinsertstrut \@IEEEeqnarraystrutreset {\ifnum0=`}\fi \@ifstar{\@IEEEeqnarrayboxYCR}{\@IEEEeqnarrayboxYCR}}
 
 \def\@IEEEeqnarrayboxYCR{\@testopt\@IEEEeqnarrayboxXCR\z@skip}
 
 \def\@IEEEeqnarrayboxXCR[#1]{\ifnum0=`{\fi}\cr\noalign{\if@IEEEeqnarrayboxnojot\else\vskip\jot\fi\vskip#1\relax}}
 
-
-
 \def\@IEEEbuildpreamble#1{\@IEEEtrantmptoksA={}\let\@IEEEBPcurtype=u\let\@IEEEBPprevtype=s\let\@IEEEBPnexttype=u\def\@IEEEBPcurglue={0pt plus 0pt minus 0pt}\def\@IEEEBPcurcolname{@IEEEdefault}\let\@IEEEBPcurnum=\@IEEEtrantmpcountA \@IEEEBPcurnum=0\@IEEEeqnnumcols=0\edef\@IEEEBPstartglue{\@IEEEeqnarraycolSEPdefaultstart}\edef\@IEEEBPendglue{\@IEEEeqnarraycolSEPdefaultend}\edef\@IEEEedefMACRO{#1}\relax \expandafter\@@IEEEbuildpreamble\@IEEEedefMACRO\ignorespaces\relax\relax}
-
 
 \def\@@IEEEbuildpreamble#1#2{\let\@@nextIEEEbuildpreamble=\@@IEEEbuildpreamble \@IEEEextracttokengroups{#1}\relax
 \ifx\@IEEEextractedfirsttoken\ignorespaces\let\@@nextIEEEbuildpreamble=\@@IEEEfinishpreamble\else \@IEEEgetcoltype{#1}{\@IEEEBPcurtype}{1}\@IEEEgetcoltype{#2}{\@IEEEBPnexttype}{0}\if\@IEEEBPcurtype g\@IEEEgetcurglue{#1}{\@IEEEBPcurglue}\fi \if\@IEEEBPcurtype c\@IEEEgetcurcol{#1}\fi \if\@IEEEBPcurtype n\@IEEEprocessNcol{#1}\fi \if\@IEEEBPcurtype g\@IEEEprocessGcol\fi \if\@IEEEBPcurtype c\@IEEEprocessCcol\fi \let\@IEEEBPprevtype=\@IEEEBPcurtype \fi\@@nextIEEEbuildpreamble{#2}}
 
-
 \def\@@IEEEfinishpreamble#1{\ifnum\@IEEEeqnnumcols<1\relax
 \@IEEEclspkgerror{No column specifiers declared for IEEEeqnarray}{At least one column type must be declared for each IEEEeqnarray.}\fi \if\@IEEEBPprevtype u\@IEEEappendtoksA{\tabskip=\@IEEEBPendglue}\fi}
-
 
 \def\@IEEEgetcoltype#1#2#3{\@IEEEextracttoken{#1}\relax
 \let#2=u\relax \ifx\@IEEEextractedtoken\ignorespaces\let#2=e\else
@@ -1926,10 +1702,8 @@ Using a default centering column instead}{You must define IEEEeqnarray column ty
 \if0\noexpand#3\relax\else\@IEEEclspkgerror{Invalid character in column specifications}{Only letters, numerals and certain other symbols are allowed \MessageBreak
 as IEEEeqnarray column specifiers.}\fi\fi}
 
-
 \def\@IEEEgetcurcol#1{\expandafter\ifx\csname @IEEEeqnarraycolDEF#1\endcsname\@IEEEeqnarraycolisdefined \def\@IEEEBPcurcolname{#1}\else \@IEEEclspkgerror{Invalid column type "#1" in column specifications.\MessageBreak
 Using a default centering column instead}{You must define IEEEeqnarray column types before use.}\def\@IEEEBPcurcolname{@IEEEdefault}\fi}
-
 
 \def\@IEEEgetcurglue#1#2{\@IEEEextracttoken{#1}\relax
 \ifx\@IEEEextractedtokensdiscarded\@empty\else
@@ -1952,7 +1726,6 @@ column specifications. Using a default value of\MessageBreak
 0pt instead}{Only !,:;'"./?*+ and - are valid predefined glue types in the\MessageBreak 
 IEEEeqnarray column specifications.}\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
 
-
 \def\@IEEEprocessNcol#1{\if\@IEEEBPprevtype g\@IEEEclspkgerror{Back-to-back inter-column glue specifiers in column\MessageBreak
 specifications. Ignoring consecutive glue specifiers\MessageBreak
 after the first}{You cannot have two or more glue types next to each other\MessageBreak 
@@ -1960,7 +1733,6 @@ in the IEEEeqnarray column specifications.}\let\@IEEEBPcurtype=a\@IEEEBPcurnum=0
 column specifications. Using a default value of\MessageBreak
 0pt instead}{You must define all IEEEeqnarray numerical inter-column glue types via\MessageBreak
 \string\IEEEeqnarraydefcolsep \space before they are used in column specifications.}\edef\@IEEEBPcurglue{\@IEEEeqnarraycolSEPzero}\fi \let\@IEEEBPcurtype=g\let\@IEEEBPprevtype=\@IEEEBPprevsavedtype \@IEEEBPcurnum=0\relax \fi \fi \fi }
-
 
 \def\@IEEEprocessGcol{\if\@IEEEBPprevtype a\let\@IEEEBPcurtype=a\else
 \if\@IEEEBPprevtype s\edef\@IEEEBPstartglue{\@IEEEBPcurglue}\else \if\@IEEEBPprevtype g\@IEEEclspkgerror{Back-to-back inter-column glue specifiers in column\MessageBreak
@@ -1973,18 +1745,10 @@ type in the column specifications. Ignoring this glue\MessageBreak
 specifier}{Except for the first and last positions, glue can be placed only\MessageBreak
 between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
-
 \def\@IEEEprocessCcol{\if\@IEEEBPnexttype g\else
 \if\@IEEEBPnexttype n\else
 \ifnum\@IEEEeqnnumcols>0\relax\@IEEEappendtoksA{&}\fi \if\@IEEEBPnexttype e\@IEEEappendtoksA{\tabskip=\@IEEEBPendglue\relax}\else \@IEEEappendtoksA{\tabskip=\@IEEEeqnarraycolSEPdefaultmid\relax}\fi \toks0={##}\if@advanceIEEEeqncolcnt\@IEEEappendtoksA{\global\advance\@IEEEeqncolcnt by 1\relax}\fi
 \@IEEEappendNOEXPANDtoksA{\begingroup\csname @IEEEeqnarraycolPRE}\@IEEEappendtoksA{\@IEEEBPcurcolname}\@IEEEappendNOEXPANDtoksA{\endcsname}\@IEEEappendtoksA{\the\toks0}\@IEEEappendNOEXPANDtoksA{\relax\relax\relax\relax\relax \relax\relax\relax\relax\relax\csname @IEEEeqnarraycolPOST}\@IEEEappendtoksA{\@IEEEBPcurcolname}\@IEEEappendNOEXPANDtoksA{\endcsname\relax\relax\relax\relax\relax \relax\relax\relax\relax\relax\endgroup}\advance\@IEEEeqnnumcols by 1\relax \fi \fi }
-
-
-
-
-
-
-
 
 \def\@IEEEheaderstyle{\normalfont\scriptsize}
 \def\@IEEEfooterstyle{\normalfont\scriptsize}
@@ -1992,7 +1756,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \def\@IEEEheaderstyle{\normalfont\sffamily\scriptsize}
   \def\@IEEEfooterstyle{\normalfont\sffamily\scriptsize}
 \fi
-
 
 \def\ps@headings{\def\@oddhead{\hbox{}\@IEEEheaderstyle\rightmark\hfil\thepage}\relax
 \def\@evenhead{\@IEEEheaderstyle\thepage\hfil\leftmark\hbox{}}\relax
@@ -2023,7 +1786,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \let\@evenfoot\@empty
 \fi}
 
-
 \def\ps@IEEEtitlepagestyle{\def\@oddhead{\hbox{}\@IEEEheaderstyle\leftmark\hfil\thepage}\relax
 \def\@evenhead{\@IEEEheaderstyle\thepage\hfil\leftmark\hbox{}}\relax
 \let\@oddfoot\@empty
@@ -2050,7 +1812,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \let\@evenhead\@empty
 \fi}
 
-
 \def\ps@IEEEpeerreviewcoverpagestyle{\let\@oddhead\@empty
 \let\@evenhead\@empty
 \let\@oddfoot\@empty
@@ -2071,17 +1832,12 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \fi
 \fi}
 
-
-
 \def\markboth#1#2{\def\leftmark{\MakeUppercase{\protect#1}}\def\rightmark{\MakeUppercase{\protect#2}}}
 
 \def\today{\ifcase\month\or
     January\or February\or March\or April\or May\or June\or
     July\or August\or September\or October\or November\or December\fi
     \space\number\day, \number\year}
-
-
-
 
 \def\@citex[#1]#2{\let\@citea\@empty
   \@cite{\@for\@citeb:=#2\do
@@ -2114,8 +1870,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \newcommand\subsubitem{\@idxitem \hspace*{30\p@}}
 \newcommand\indexspace{\par \vskip 10\p@ \@plus5\p@ \@minus3\p@\relax}
 
-
-
 \def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
 \def\@bstctlcite[#1]#2{\@bsphack
   \@for\@citeb:=#2\do{\edef\@citeb{\expandafter\@firstofone\@citeb}\if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}\@esphack}
@@ -2137,7 +1891,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \def\@IEEEbibitemprefix{\@IEEEtrantmpcountA=\@IEEEtriggerrefnum\relax \advance\@IEEEtrantmpcountA by -1\relax \ifnum\c@enumiv=\@IEEEtrantmpcountA\relax\@IEEEtriggercmd\relax\fi}
 
-
 \def\@biblabel#1{[#1]}
 
 \@IEEEcompsoconly{\def\@biblabel#1{[#1]\hfill}}
@@ -2146,7 +1899,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \@IEEEcompsocconfonly{\def\IEEEbibitemsep{0.5\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}}
 
-
 \def\thebibliography#1{\section*{\refname}\addcontentsline{toc}{section}{\refname}\footnotesize\vskip 0.3\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip \list{\@biblabel{\@arabic\c@enumiv}}{\settowidth\labelwidth{\@biblabel{#1}}\leftmargin\labelwidth
     \advance\leftmargin\labelsep\relax
     \itemsep \IEEEbibitemsep\relax
@@ -2154,18 +1906,13 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
     \renewcommand\theenumiv{\@arabic\c@enumiv}}\let\@IEEElatexbibitem\bibitem \def\bibitem{\@IEEEbibitemprefix\@IEEElatexbibitem}\def\newblock{\hskip .11em plus .33em minus .07em}\ifCLASSOPTIONtechnote\sloppy\clubpenalty4000\widowpenalty4000\interlinepenalty100\else\sloppy\clubpenalty4000\widowpenalty4000\interlinepenalty500\fi \sfcode`\.=1000\relax}
 \let\endthebibliography=\endlist
 
-
-
-
 \def\IEEEmembership#1{{\@IEEEnotcompsoconly{\sublargesize}\normalfont\@IEEEcompsoconly{\sffamily}\textit{#1}}}
- 
 
 \ifCLASSOPTIONtransmag
 \DeclareRobustCommand*{\IEEEauthorrefmark}[1]{\raisebox{0pt}[0pt][0pt]{\textsuperscript{\footnotesize #1}}}
 \else
 \DeclareRobustCommand*{\IEEEauthorrefmark}[1]{\raisebox{0pt}[0pt][0pt]{\textsuperscript{\footnotesize\ensuremath{\ifcase#1\or *\or \dagger\or \ddagger\or \mathsection\or \mathparagraph\or \|\or **\or \dagger\dagger \or \ddagger\ddagger \else\textsuperscript{\expandafter\romannumeral#1}\fi}}}}
 \fi
-
 
 \def\@IEEEauthorblockNstyle{\normalfont\@IEEEcompsocnotconfonly{\sffamily}\sublargesize}
 \def\@IEEEauthorblockAstyle{\normalfont\@IEEEcompsocnotconfonly{\sffamily}\@IEEEcompsocconfonly{\itshape}\normalsize}
@@ -2196,12 +1943,9 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \def\@IEEEcurfontRESTORE{\fontsize{\@IEEESAVESTATEfontsize}{\@IEEESAVESTATEfontbaselineskip}\fontencoding{\@IEEESAVESTATEfontencoding}\fontfamily{\@IEEESAVESTATEfontfamily}\fontseries{\@IEEESAVESTATEfontseries}\fontshape{\@IEEESAVESTATEfontshape}\selectfont}
 
-
 \newif\if@IEEEprevauthorblockincol   \@IEEEprevauthorblockincolfalse
 
-
 \def\@IEEEauthorstrutrule{\@IEEEtrantmpdimenA\@IEEEauthorblockXinterlinespace \@IEEEtrantmpdimenA=\baselinestretch\@IEEEtrantmpdimenA \rule[-0.3\@IEEEtrantmpdimenA]{0pt}{\@IEEEtrantmpdimenA}}
-
 
 \def\IEEEauthorblockN#1{\relax\@IEEEauthorblockNstyle \gdef\@IEEEauthorblockXinterlinespace{0pt}\if@IEEEprevauthorblockincol\expandafter\@IEEEauthorblockNtopspaceline\fi
 \global\@IEEEprevauthorblockincoltrue \gdef\@IEEEauthorblockXinterlinespace{\@IEEEauthorblockNinterlinespace}#1\crcr}
@@ -2212,7 +1956,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \def\@IEEEauthorblockAtopspaceline{\cr\noalign{\vskip\@IEEEauthorblockAtopspace}}
 
-
 \ifCLASSOPTIONconference
 \else
    \ifCLASSOPTIONpeerreviewca\else
@@ -2220,8 +1963,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
          \def\IEEEauthorblockN#1{#1}\def\IEEEauthorblockA#1{#1}\fi
    \fi
 \fi
-
-
 
 \def\@IEEEauthorhalign{\@IEEEauthordefaulttextstyle \lineskip=0pt\relax \lineskiplimit=0pt\relax \baselineskip=0pt\relax \@IEEEcurfontSAVE \mathsurround\z@\relax \let\\\@IEEEauthorhaligncr \tabskip=0pt\relax \everycr{}\@IEEEprevauthorblockincolfalse \def\@IEEEauthorblockXinterlinespace{2.7ex}\vtop\bgroup \halign\bgroup&\relax\hfil\@IEEEcurfontRESTORE\relax ##\relax
    \hfil\@IEEEcurfontSAVE\@IEEEauthorstrutrule\cr}
@@ -2233,8 +1974,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \def\@@IEEEauthorhaligncr{\@testopt\@@@IEEEauthorhaligncr\z@skip}
 
 \def\@@@IEEEauthorhaligncr[#1]{\ifnum0=`{\fi}\cr\noalign{\vskip#1\relax}}
-
-
 
 \newif\if@IEEEWARNand
 \@IEEEWARNandtrue
@@ -2269,7 +2008,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \setcounter{footnote}{0}\let\maketitle\relax\let\@maketitle\relax
   \gdef\@thanks{}\let\thanks\relax}
 
-
 \long\def\@IEEEtitleabstractindextextbox#1{\parbox{1\textwidth}{#1}}
 \ifCLASSOPTIONcompsoc
 \long\def\@IEEEtitleabstractindextextbox#1{\parbox{0.922\textwidth}{\@IEEEcompsocnotconfonly{\rightskip\@flushglue\leftskip\z@skip}#1}}
@@ -2298,7 +2036,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
    \fi
 \fi\par\addvspace{0.5\baselineskip}\egroup}
 
-
 \def\@IEEEcompsocdiamondlinei{\vrule depth 0pt height 0.5pt width 4cm\nobreak\hspace{7.5pt}\nobreak
 \raisebox{-3.5pt}{\fontfamily{pzd}\fontencoding{U}\fontseries{m}\fontshape{n}\fontsize{11}{12}\selectfont\char70}\nobreak
 \hspace{7.5pt}\nobreak\vrule depth 0pt height 0.5pt width 4cm\relax}
@@ -2321,9 +2058,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \vrule depth 0pt height 0.5pt width 0.33\@IEEEtrantmpdimenB\@IEEEcompsocdiamondlineiii\vrule depth 0pt height 0.5pt width 0.33\@IEEEtrantmpdimenB\relax
 \fi\fi}
 
-
 \def\@IEEEtriggeroneshotfootnoterule{\global\@IEEEenableoneshotfootnoteruletrue}
-
 
 \long\def\thanks#1{\footnotemark
     \protected@xdef\@thanks{\@thanks
@@ -2331,12 +2066,9 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
         \protect\@IEEEtriggeroneshotfootnoterule\relax}\ignorespaces#1}}}
 \let\@thanks\@empty
 
-
 \long\def\author#1{\gdef\@author{#1}}
 
-
 \def\@IEEEsetupcompsocitemizelist{\def\labelitemi{$\bullet$}\setlength{\IEEElabelindent}{0pt}\setlength{\labelsep}{1.2em}\setlength{\parskip}{0pt}\setlength{\partopsep}{0pt}\setlength{\topsep}{0.5\baselineskip}\vspace{-1\baselineskip}\relax}
-
 
 \newif\if@IEEEbreakcompsocthanksitem \@IEEEbreakcompsocthanksitemfalse
 
@@ -2354,7 +2086,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \indent\fi\@IEEEbreakcompsocthanksitemtrue\ignorespaces}
 \fi
 
-
 \ifCLASSOPTIONpeerreview
 \def\IEEEpeerreviewmaketitle{\@IEEEcleardoublepage{empty}\ifCLASSOPTIONtwocolumn
 \twocolumn[{\IEEEquantizevspace{\@IEEEpeerreviewmaketitle}[\IEEEquantizedisabletitlecmds]{0pt}[-\topskip]{\baselineskip}{\@IEEENORMtitlevspace}{\@IEEEMINtitlevspace}}]
@@ -2369,8 +2100,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \def\@IEEEpeerreviewmaketitle{\bgroup\par\addvspace{0.5\baselineskip}\centering\@IEEEcompsoconly{\sffamily}\normalfont\normalsize\vskip0.2em{\Huge\@title\par}\vskip1.0em\par
 \par\addvspace{0.5\baselineskip}\egroup}
 
-
-
 \def\@IEEEstatictitlevskip{{\normalfont\normalsize
 \ifCLASSOPTIONpeerreview
 \vskip 1\baselineskip plus 0.375\baselineskip minus 0.1875\baselineskip
@@ -2378,7 +2107,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
    \ifCLASSOPTIONconference \vskip 1\baselineskip plus 0.375\baselineskip minus 0.1875\baselineskip \else \ifCLASSOPTIONtechnote \vskip 1\baselineskip plus 0.375\baselineskip minus 0.1875\baselineskip \else \vskip 2.5\baselineskip plus 0.75\baselineskip minus 0.375\baselineskip \fi
    \fi
 \fi}}
-
 
 \def\@IEEENORMtitlevspace{2.5\baselineskip}
 \def\@IEEEMINtitlevspace{2\baselineskip}
@@ -2389,11 +2117,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \def\@IEEEMINtitlevspace{0.75\baselineskip}
 \fi
 
-
 \def\IEEEquantizevspace{\begingroup\@ifstar{\@IEEEquantizevspacestarformtrue\@IEEEquantizevspace}{\@IEEEquantizevspacestarformfalse\@IEEEquantizevspace}}
-
-
-
 
 \newif\if@IEEEquantizevspacestarform       \newif\if@IEEEquantizevspaceuseoutdimenreg \newdimen\@IEEEquantizeheightA
 \newdimen\@IEEEquantizeheightB
@@ -2401,9 +2125,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \newdimen\@IEEEquantizeprevdepth \newcount\@IEEEquantizemultiple
 \newbox\@IEEEquantizeboxA
 
-
 \def\@IEEEquantizevspace{\@ifnextchar [{\@IEEEquantizevspaceuseoutdimenregtrue\@@IEEEquantizevspace}{\@IEEEquantizevspaceuseoutdimenregfalse\@@IEEEquantizevspace[]}}
-
 
 \long\def\@@IEEEquantizevspace[#1]#2{\relax
 \edef\@IEEEquantizeoutdimenreg{#1}\relax
@@ -2477,20 +2199,14 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \vskip\@IEEEquantizeheightC\relax
 \fi}
 
-
 \def\IEEEquantizedisableglobal{\let\global\relax
 \let\gdef\def
 \let\xdef\edef}
 \def\IEEEquantizedisabletitlecmds{\long\def\thanks##1{\relax}\relax
 \long\def\IEEEcompsocitemizethanks##1{\relax}\def\newpage{\relax}}
 
-
-
-
-
 \let\@IEEEaftertitletext=\relax
 \long\def\IEEEaftertitletext#1{\def\@IEEEaftertitletext{#1}}
-
 
 \let\@IEEEtitleabstractindextext=\relax
 \long\def\IEEEtitleabstractindextext#1{\def\@IEEEtitleabstractindextext{#1}}
@@ -2506,10 +2222,8 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
   \fi
 \fi}
 
-
 \def\@IEEEtweakunitybaselinestretch#1{{\def\baselinestretch{1}\selectfont
 \global\@tempskipa\baselineskip}\ifnum\@tempskipa=\baselineskip \def\baselinestretch{#1}\selectfont\fi\relax}
-
 
 \def\@IEEEabskeysecsize{\small}
 \ifx\CLASSOPTIONpt\@IEEEptsizenine
@@ -2518,7 +2232,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \@IEEEcompsoconly{\def\@IEEEabskeysecsize{\footnotesize}}
 \@IEEEcompsocconfonly{\def\@IEEEabskeysecsize{\small}}
-
 
 \def\abstract{\normalfont
     \if@twocolumn
@@ -2582,18 +2295,12 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
     \fi\@IEEEgobbleleadPARNLSP}
 \fi
 
-
-
 \long\def\@IEEEgobbleleadPARNLSP#1{\let\@IEEEswallowthistoken=0\let\@IEEEgobbleleadPARNLSPtoken#1\let\@IEEEgobbleleadPARtoken=\par \let\@IEEEgobbleleadNLtoken=\\\let\@IEEEgobbleleadSPtoken=\ \def\@IEEEgobbleleadSPMACRO{\ }\ifx\@IEEEgobbleleadPARNLSPtoken\@IEEEgobbleleadPARtoken \let\@IEEEswallowthistoken=1\fi \ifx\@IEEEgobbleleadPARNLSPtoken\@IEEEgobbleleadNLtoken \let\@IEEEswallowthistoken=1\fi \ifx\@IEEEgobbleleadPARNLSPtoken\@IEEEgobbleleadSPtoken \let\@IEEEswallowthistoken=1\fi \ifx\@IEEEgobbleleadPARNLSPtoken\@IEEEgobbleleadSPMACRO \let\@IEEEswallowthistoken=1\fi \ifx\@IEEEswallowthistoken 1\let\@IEEEnextgobbleleadPARNLSP=\@IEEEgobbleleadPARNLSP\else \let\@IEEEnextgobbleleadPARNLSP=#1\fi \@IEEEnextgobbleleadPARNLSP}
-
-
-
 
 \def\@IEEEsectpunct{:\ \,}  \ifCLASSOPTIONcompsoc
 \ifCLASSOPTIONconference
 \def\@IEEEsectpunct{.\ }
 \fi\fi
-
 
 \def\@seccntformat#1{\csname the#1dis\endcsname\hskip 0.5em\relax}
 
@@ -2611,18 +2318,15 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
                \protect\numberline{\csname the#1\endcsname}\fi#7}\else \def\@svsechd{#6{\hskip #3\relax\@svsec #8\@IEEEsectpunct\mbox{}}\addcontentsline{toc}{#1}{\ifnum #2>\c@secnumdepth\relax\else
                \protect\numberline{\csname the#1\endcsname}\fi#7}}\fi \@xsect{#5}}
 
-
 \def\@ssect#1#2#3#4#5{\@tempskipa #3\relax
   \ifdim \@tempskipa>\z@
 \begingroup \noindent #4{\relax{\hskip #1}{\interlinepenalty \@M #5\@@par}}\endgroup
 \else \def\@svsechd{#4{\hskip #1\relax #5\@IEEEsectpunct\mbox{}}}\fi
   \@xsect{#3}}
 
-
 \ifCLASSOPTIONconference \def\section{\@startsection{section}{1}{\z@}{1.5ex plus 1.5ex minus 0.5ex}{0.7ex plus 1ex minus 0ex}{\normalfont\normalsize\centering\scshape}}\def\subsection{\@startsection{subsection}{2}{\z@}{1.5ex plus 1.5ex minus 0.5ex}{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\itshape}}\else \def\section{\@startsection{section}{1}{\z@}{3.0ex plus 1.5ex minus 1.5ex}{0.7ex plus 1ex minus 0ex}{\normalfont\normalsize\centering\scshape}}\def\subsection{\@startsection{subsection}{2}{\z@}{3.5ex plus 1.5ex minus 1.5ex}{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\itshape}}\fi
 
 \def\subsubsection{\@startsection{subsubsection}{3}{\parindent}{0ex plus 0.1ex minus 0.1ex}{0ex}{\normalfont\normalsize\itshape}}\def\paragraph{\@startsection{paragraph}{4}{2\parindent}{0ex plus 0.1ex minus 0.1ex}{0ex}{\normalfont\normalsize\itshape}}
-
 
 \ifCLASSOPTIONcompsoc
 \ifCLASSOPTIONconference
@@ -2631,10 +2335,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \ifCLASSOPTIONtransmag
 \def\subsection{\@startsection{subsection}{2}{0.75\parindent}{3.5ex plus 1.5ex minus 1.5ex}{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\itshape}}\def\subsubsection{\@startsection{subsubsection}{3}{1.25\parindent}{0.1ex plus 0.1ex minus 0.1ex}{0.1ex}{\normalfont\normalsize\itshape}}\fi
 
-
 \def\IEEEraisesectionheading#1{\noindent\raisebox{1.5\baselineskip}[0pt][0pt]{\parbox[b]{\columnwidth}{#1\unskip\global\everypar=\everypar}}\vspace{-1\baselineskip}\vspace{-\parskip}\par}
-
-
 
 \def\IEEEQEDclosed{\mbox{\rule[0pt]{1.3ex}{1.3ex}}} \def\IEEEQEDopen{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.2pt}\fbox{\rule[0pt]{0pt}{1.3ex}\rule[0pt]{1.3ex}{0pt}}}}
 \ifCLASSOPTIONcompsoc
@@ -2649,7 +2350,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
                     \let\veqno\relax\hbox{\IEEEQED}}
 \def\IEEEQEDhere{\global\@IEEEQEDshowfalse\IEEEQED}
 \def\IEEEQEDoff{\global\@IEEEQEDshowfalse}
-
 
 \newdimen\@IEEEtmpitemindent
 
@@ -2667,8 +2367,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \def\@endtheorem{\endtrivlist}
 \fi
 
-
-
 \gdef\@IEEEthmcounterinsection#1{\arabic{#1}}
 \edef\@IEEEstringsection{section}
 
@@ -2680,8 +2378,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
      \expandafter\xdef\csname the#1\endcsname{\expandafter\noexpand\csname the#3\endcsname \@thmcountersep
           \@thmcounter{#1}}\fi
      \global\@namedef{#1}{\@thm{#1}{#2}}\global\@namedef{end#1}{\@endtheorem}}}
-
-
 
 \pagestyle{headings}
 \pagenumbering{arabic}
@@ -2704,18 +2400,11 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \flushbottom
 \fi
 
-
-
-
-
-
 \begingroup
 \catcode`\Q=3
 \long\gdef\@ifmtarg#1{\@xifmtarg#1QQ\@secondoftwo\@firstoftwo\@nil}
 \long\gdef\@xifmtarg#1#2Q#3#4#5\@nil{#4}
 \endgroup
-
-
 
 \def\@IEEEsaveoriginalsectiononce{\let\@IEEEappendixsavesection\section
 \let\@IEEEsaveoriginalsectiononce\relax}
@@ -2725,22 +2414,15 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \def\@IEEEdestroythesectionargument#1{\typeout{** WARNING: Ignoring useless
 \protect\section\space in Appendix (line \the\inputlineno).}}
 
-
-
-
 \def\appendix{\relax}
 \renewcommand{\appendix}[1][]{\@IEEEsaveoriginalsectiononce\par
 \gdef\theHsection{Appendix.A}\xdef\Hy@chapapp{appendix}\setcounter{section}{0}\setcounter{subsection}{0}\setcounter{subsubsection}{0}\setcounter{paragraph}{0}\gdef\thesection{A}\gdef\thesectiondis{}\gdef\thesubsection{\Alph{subsection}}\gdef\@IEEEthmcounterinsection##1{A}
     \refstepcounter{section}\@ifmtarg{#1}{\@IEEEappendixsavesection*{\appendixname}\addcontentsline{toc}{section}{\appendixname}}{\@IEEEappendixsavesection*{\appendixname\nobreakspace\\* #1}\addcontentsline{toc}{section}{\appendixname: #1}}\def\section{\@ifstar{\@IEEEappendixsavesection*}{\@IEEEdestroythesectionargument}}}
 
-
-
 \def\appendices{\@IEEEsaveoriginalsectiononce\par
 \gdef\theHsection{Appendix.\Alph{section}}\xdef\Hy@chapapp{appendix}\setcounter{section}{-1}\setcounter{subsection}{0}\setcounter{subsubsection}{0}\setcounter{paragraph}{0}\ifCLASSOPTIONromanappendices \gdef\thesection{\Roman{section}}\gdef\thesectiondis{\Roman{section}}\@IEEEcompsocconfonly{\gdef\thesectiondis{\Roman{section}.}}\gdef\@IEEEthmcounterinsection##1{A\arabic{##1}}
     \else \gdef\thesection{\Alph{section}}\gdef\thesectiondis{\Alph{section}}\@IEEEcompsocconfonly{\gdef\thesectiondis{\Alph{section}.}}\gdef\@IEEEthmcounterinsection##1{\Alph{##1}}
     \fi \refstepcounter{section}\setcounter{section}{0}\def\section{\@ifstar{\@IEEEappendixsavesection*}{\refstepcounter{section}\@IEEEprocessthesectionargument}}}
-
-
 
 \ifCLASSOPTIONcompsoc
   \def\IEEEPARstartFONTSTYLE{\mdseries}
@@ -2768,12 +2450,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \ifnum\@IEEEtrantmpdimenB < 0 \@IEEEtrantmpdimenB 0pt\fi
 \hangindent\@IEEEtrantmpdimenB\hangafter=-\IEEEPARstartDROPLINES \makebox[0pt][l]{\hspace{-\@IEEEtrantmpdimenA}\raisebox{-\IEEEPARstartDROPDEPTH}[0pt][0pt]{\hspace{\IEEEPARstartHOFFSET}\@IEEEPARstartfont\IEEEPARstartCAPSTYLE{#1\IEEEPARstartITLCORRECT}\hspace{\IEEEPARstartSEP}}}{\IEEEPARstartWORDFONTSTYLE{\IEEEPARstartWORDCAPSTYLE{\selectfont#2}}}}
 
-
-
-
 \def\@IEEEtranneedspace#1#2{\penalty-100\begingroup \@IEEEtrantmpdimenB\pagegoal\advance\@IEEEtrantmpdimenB-\pagetotal \ifdim #1>\@IEEEtrantmpdimenB\relax \ifdim\@IEEEtrantmpdimenB>\z@\relax #2\fi \newpage \fi\endgroup}
-
-
 
 \newif\if@IEEEbiographyTOCentrynotmade
 \global\@IEEEbiographyTOCentrynotmadetrue
@@ -2785,10 +2462,7 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 
 \newenvironment{IEEEbiography}[2][]{\normalfont\@IEEEcompsoconly{\sffamily}\footnotesize \unitlength 1in\parskip=0pt\par\parindent 1em\interlinepenalty500\@IEEEtrantmpdimenA=\@IEEEBIOhangdepth \advance\@IEEEtrantmpdimenA by \@IEEEBIOskipN \advance\@IEEEtrantmpdimenA by 1\baselineskip \@IEEEtranneedspace{\@IEEEtrantmpdimenA}{\relax}\vskip \@IEEEBIOskipN plus 1fil minus 0\baselineskip \def\@IEEEtempbiographybox{{\setlength{\fboxsep}{0pt}\framebox{\begin{minipage}[b][\@IEEEBIOphotodepth][c]{\@IEEEBIOphotowidth}\centering PLACE\\ PHOTO\\ HERE \end{minipage}}}}\@ifmtarg{#1}{\relax}{\def\@IEEEtempbiographybox{\mbox{\begin{minipage}[b][\@IEEEBIOphotodepth][c]{\@IEEEBIOphotowidth}\centering #1\end{minipage}}}}\if@IEEEbiographyTOCentrynotmade \setcounter{IEEEbiography}{-1}\refstepcounter{IEEEbiography}\addcontentsline{toc}{section}{Biographies}\global\@IEEEbiographyTOCentrynotmadefalse \fi \refstepcounter{IEEEbiography}\addcontentsline{toc}{subsection}{#2}\let\@IEEEBIOORGparCMD=\par \edef\par{\hfil\break\indent}\settoheight{\@IEEEtrantmpdimenA}{\@IEEEtempbiographybox}\@IEEEtrantmpdimenB=\@IEEEBIOhangdepth \@IEEEtrantmpcountA=\@IEEEtrantmpdimenB \divide\@IEEEtrantmpcountA by \baselineskip \advance\@IEEEtrantmpcountA by 1\hangindent\@IEEEBIOhangwidth \hangafter-\@IEEEtrantmpcountA \settoheight{\@IEEEtrantmpdimenB}{\mbox{T}}\noindent\makebox[0pt][l]{\hspace{-\@IEEEBIOhangwidth}\raisebox{\@IEEEtrantmpdimenB}[0pt][0pt]{\raisebox{-\@IEEEBIOphotodepth}[0pt][0pt]{\@IEEEtempbiographybox}}}\noindent\textbf{#2\ }\@IEEEgobbleleadPARNLSP}{\relax\let\par=\@IEEEBIOORGparCMD\par \ifnum \prevgraf <\@IEEEtrantmpcountA\relax \advance\@IEEEtrantmpcountA by -\prevgraf \advance\@IEEEtrantmpcountA by -1\relax \@IEEEtrantmpdimenA=\baselineskip \multiply\@IEEEtrantmpdimenA by \@IEEEtrantmpcountA \noindent\rule{0pt}{\@IEEEtrantmpdimenA}\fi \par\normalfont}
 
-
-
 \newenvironment{IEEEbiographynophoto}[1]{\if@IEEEbiographyTOCentrynotmade \setcounter{IEEEbiography}{-1}\refstepcounter{IEEEbiography}\addcontentsline{toc}{section}{Biographies}\global\@IEEEbiographyTOCentrynotmadefalse \fi \refstepcounter{IEEEbiography}\addcontentsline{toc}{subsection}{#1}\normalfont\@IEEEcompsoconly{\sffamily}\footnotesize\interlinepenalty500\vskip 4\baselineskip plus 1fil minus 0\baselineskip \parskip=0pt\par \noindent\textbf{#1\ }\@IEEEgobbleleadPARNLSP}{\relax\par\normalfont}
-
 
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
@@ -2800,13 +2474,9 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \DeclareRobustCommand*\cal{\@fontswitch\relax\mathcal}
 \DeclareRobustCommand*\mit{\@fontswitch\relax\mathnormal}
 
-
 \def\@IEEEspecialpapernotice{\relax}
- 
+
 \def\IEEEspecialpapernotice#1{\ifCLASSOPTIONconference \def\@IEEEspecialpapernotice{{\sublargesize\textit{#1}\vspace*{1em}}}\else \def\@IEEEspecialpapernotice{{\\*[1.5ex]\sublargesize\textit{#1}}\vspace*{-2ex}}\fi}
-
-
-
 
 \def\@IEEEpubidpullup{1.3\baselineskip}
 \ifCLASSOPTIONtechnote
@@ -2823,15 +2493,8 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \global\@IEEEusingpubidfalse
 \def\IEEEpubid#1{\def\@IEEEpubid{#1}\global\@IEEEusingpubidtrue}
 
-
 \def\IEEEpubidadjcol{\ifCLASSOPTIONcompsoc\else\ifCLASSOPTIONpeerreview\else
 \if@twocolumn\if@IEEEusingpubid\enlargethispage{-\@IEEEpubidpullup}\fi\fi\fi\fi}
-
-
-
-
-
-
 
 \newsavebox{\@IEEEtranrubishbin}
 
@@ -2852,7 +2515,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \@IEEEWARNIEEEmembershiptrue
 \@IEEEWARNIEEEaftertitletexttrue
 
-
 \let\@IEEESAVECMDthanks\thanks
 \let\@IEEESAVECMDIEEEPARstart\IEEEPARstart
 \let\@IEEESAVECMDIEEEbiography\IEEEbiography
@@ -2864,7 +2526,6 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
 \let\@IEEESAVECMDIEEEmembership\IEEEmembership
 \let\@IEEESAVECMDIEEEaftertitletext\IEEEaftertitletext
 
-
 \ifCLASSOPTIONdraftcls
 \def\IEEEPARstart#1#2{#1#2\if@IEEEWARNIEEEPARstart\typeout{** ATTENTION: \noexpand\IEEEPARstart
  is disabled in draft mode (line \the\inputlineno).}\fi\global\@IEEEWARNIEEEPARstartfalse}
@@ -2874,13 +2535,11 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
  is locked out for technotes (line \the\inputlineno).}\fi\global\@IEEEWARNIEEEPARstartfalse}
 \fi
 
-
 \ifCLASSOPTIONconference
 \def\thanks#1{\if@IEEEWARNthanks\typeout{** WARNING: \noexpand\thanks
  is locked out when in conference mode (line \the\inputlineno).}\fi\global\@IEEEWARNthanksfalse}
 \def\IEEEPARstart#1#2{#1#2\if@IEEEWARNIEEEPARstart\typeout{** WARNING: \noexpand\IEEEPARstart
  is locked out when in conference mode (line \the\inputlineno).}\fi\global\@IEEEWARNIEEEPARstartfalse}
-
 
 \newenvironment{@IEEEbogusbiography}[2][]{\if@IEEEWARNIEEEbiography\typeout{** WARNING: \noexpand\IEEEbiography
  is locked out when in conference mode (line \the\inputlineno).}\fi\global\@IEEEWARNIEEEbiographyfalse \setbox\@IEEEtranrubishbin\vbox\bgroup}{\egroup\relax}
@@ -2900,24 +2559,15 @@ between column types.}\let\@IEEEBPcurtype=a\fi \fi \fi \fi }
  is locked out when in conference mode (line \the\inputlineno).}\fi\global\@IEEEWARNIEEEaftertitletextfalse}
 \fi
 
-
 \def\IEEEoverridecommandlockouts{\typeout{** ATTENTION: Overriding command lockouts (line \the\inputlineno).}\let\thanks\@IEEESAVECMDthanks \let\IEEEPARstart\@IEEESAVECMDIEEEPARstart \let\IEEEbiography\@IEEESAVECMDIEEEbiography \let\endIEEEbiography\@IEEESAVECMDendIEEEbiography \let\IEEEbiographynophoto\@IEEESAVECMDIEEEbiographynophoto \let\endIEEEbiographynophoto\@IEEESAVECMDendIEEEbiographynophoto \let\IEEEpubid\@IEEESAVECMDIEEEpubid \let\IEEEpubidadjcol\@IEEESAVECMDIEEEpubidadjcol \let\IEEEmembership\@IEEESAVECMDIEEEmembership \let\IEEEaftertitletext\@IEEESAVECMDIEEEaftertitletext}
-
-
 
 {\catcode`\|=0 \catcode`\\=12
 |xdef|@IEEEbackslash{\}}
 
-
 \def\@IEEElegacywarn#1#2{\typeout{** ATTENTION: \@IEEEbackslash #1 is deprecated (line \the\inputlineno).
 Use \@IEEEbackslash #2 instead.}}
 
-
 \def\IEEEcompsoctitleabstractindextext{\@IEEElegacywarn{IEEEcompsoctitleabstractindextext}{IEEEtitleabstractindextext}\IEEEtitleabstractindextext}
 \def\IEEEdisplaynotcompsoctitleabstractindextext{\@IEEElegacywarn{IEEEdisplaynotcompsoctitleabstractindextext}{IEEEdisplaynontitleabstractindextext}\IEEEdisplaynontitleabstractindextext}
-
-
-
-
 
 %

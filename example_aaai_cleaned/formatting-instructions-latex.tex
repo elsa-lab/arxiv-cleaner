@@ -96,7 +96,6 @@ In the \LaTeX{} source for your paper, you \textbf{must} place the following lin
 
 Leave the setcounter for section number depth commented out and set at 0 unless you want to add section numbers to your paper. If you do add section numbers, you must uncomment this line and change the number to 1 (for section numbers), or 2 (for section and subsection numbers). The style file will not work properly with numbering of subsubsections, so do not use a number higher than 2.
 
-
 \begin{quote}
 \begin{small}
 \textbackslash documentclass[letterpaper]{article}\\
@@ -147,8 +146,6 @@ If your paper includes illustrations that are not compatible with PDF\TeX{} (suc
 
 \textit{Important:} Do not include \textit{any} \LaTeX{} code or nonascii characters (including accented characters) in the metadata. The data in the metadata must be completely plain ascii. It may not include slashes, accents, linebreaks, unicode, or any \LaTeX{} commands. Type the title exactly as it appears on the paper (minus all formatting). Input the author names in the order in which they appear on the paper (minus all accents), separating each author by a comma. You may also include keywords in the Keywords field.
 
-
-
 \subsection{Preparing Your Paper}
 
 After the preamble above, you should prepare your paper as follows:
@@ -195,7 +192,6 @@ Papers must be formatted to print in two-column format on 8.5 x 11 inch US lette
 \item Bottom margin: 1.25 inches
 \end{itemize} 
 
-
 The default paper size in most installations of \LaTeX{} is A4. However, because we require that your electronic paper be formatted in US letter size, you will need to alter the default for this paper to US letter size. Assuming you are using the 2e version of \LaTeX{}, you can do this by including the [letterpaper] option at the beginning of your file: 
 \textbackslash documentclass[letterpaper]{article}. 
 
@@ -205,7 +201,6 @@ This command is usually sufficient to change the format. Sometimes, however, it 
 in your preamble. 
 
 \textbf{Do not use the Geometry package to alter the page size.} Use of this style file alters aaai.sty and will result in your paper being rejected. 
-
 
 \subsubsection{Column Width and Margins.}
 To ensure maximum readability, your paper must include two columns. Each column should be 3.3 inches wide (slightly more than 3.25 inches), with a .375 inch (.952 cm) gutter of white space between the two columns. The aaai.sty file will automatically create these columns for you. 
@@ -429,8 +424,6 @@ Clancey, W. J. 1979b. Transfer of Rule-Based Expertise through a Tutorial Dialog
 
 \smallskip \noindent \textit{Forthcoming Publication}\\
 Clancey, W. J. 1986a. The Engineering of Qualitative Models. Forthcoming.
-
-
 
 \section{Producing Reliable PDF\\Documents with \LaTeX{}}
 Generally speaking, PDF files are platform independent and accessible to everyone. When creating a paper for a proceedings or publication in which many PDF documents must be merged and then printed on high-resolution PostScript RIPs, several requirements must be met that are not normally of concern. Thus to ensure that your paper will look like it does when printed on your own machine, you must take several precautions:

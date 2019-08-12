@@ -1,56 +1,25 @@
-
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{customization/core}[2019/08/08 Customization core package (example for latex-tools)]
 
-
-
-
-
 \RequirePackage{atbegshi}
-
-
-
-
 
 \RequirePackage{etoolbox}
 
-
-
-
-
 \RequirePackage{tikz}
-
-
-
-
 
 \newbool{draftmode}
 
 \boolfalse{draftmode}
 
-
-
 \DeclareOption{draft}{
     \booltrue{draftmode}
 }
 
-
-
 \ProcessOptions\relax
-
-
 
 \ifbool{draftmode}{
 
-
-
-
     \PackageWarning{customization/core.sty}{Draft mode is on.}
-
-
-
-
 
     \AtBeginShipout{
         \AtBeginShipoutAddToBox{
@@ -63,42 +32,19 @@
 }{
 }
 
-
-
-
-
 \usepackage{algorithm}
  \usepackage{appendix}
- 
-
-
-
-
 
 \usepackage[user,xr]{zref}
 
-
-
-
-
 \ifdef{\zxrsetup}{
-
-
-
-
-
 
 \ifbool{draftmode}{
 }{
 
-
-
-
         \IfFileExists{main.tex}{
 
-
             \IfFileExists{sup.tex}{
-
 
 \zexternaldocument*[main:]{main}
 

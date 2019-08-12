@@ -1,8 +1,7 @@
 import subprocess
 
 
-def run_command(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                cwd=None):
+def run_command(command, stdout=None, stderr=None, cwd=None):
     try:
         # Run the command
         p_obj = subprocess.Popen(
@@ -44,6 +43,14 @@ def run_command(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
 def check_command_results(command, return_code, stdout, stderr):
     # There are errors if the return code is nonzero or the STDERR is nonempty
     if return_code != 0 or (isinstance(stderr, str) and len(stderr) > 0):
+        # Check whether to convert none to instruction
+        if stdout is None:
+            stdout = '(See conole output above)'
+
+        if stderr is None:
+            stderr = '(See console output above)'
+
+        # Raise the error
         raise ValueError(('Failed to run the command "{}"\n' +
                           'Return code: {}\n' +
                           'STDOUT->\n{}\n' +

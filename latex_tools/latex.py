@@ -44,8 +44,7 @@ class LatexRunner:
         command = self._build_latex_compiler_command(tex_file)
 
         # Run the command
-        return_code, stdout, stderr = run_command(
-            command, stdout=subprocess.DEVNULL, stderr=None, cwd=root_dir)
+        return_code, stdout, stderr = run_command(command, cwd=root_dir)
 
         # Check return code and STDERR
         check_command_results(command, return_code, stdout, stderr)
@@ -121,6 +120,7 @@ class LatexRunner:
         return ' '.join([
             'latexpand',
             '--output="{}"'.format(output_path),
+            '--fatal',
             '--out-encoding="{}"'.format('encoding(UTF-8)'),
             extra_args,
             '"{}"'.format(input_path),

@@ -33,7 +33,7 @@ Specify the input directory containing the LaTeX project, the output directory a
 python -m arxiv_cleaner.main --input=<Input directory> --output=<Output directory> --tex=<TEX files to keep>
 ```
 
-Tex files (`.tex`, `.cls`, `.clo`, `.sty`, `.bst`) required by the TEX files to keep will be cleaned and copied to the output directory. Other files (e.g., images) required by the TEX files to keep will be copied to the output directory.
+Text files (`.tex`, `.cls`, `.clo`, `.sty`, `.bst`) required by the TEX files to keep will be cleaned and copied to the output directory. Other files (e.g., images) required by the TEX files to keep will be copied to the output directory.
 
 ## Examples
 

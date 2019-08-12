@@ -7,6 +7,7 @@ Clean LaTeX project for submitting to arXiv.
 * Produce only the files needed for the TEX files you choose
 * Expand all the files which are included by `\input` or `\include` directives
 * Remove all comments from the code (which are visible on arXiv because the uploaded LaTeX project is downloadable)
+* Remove unnecessary blank lines
 * Support UTF-8 encoding files
 
 See the difference between `example_elsa/` and `example_elsa_cleaned/`.

@@ -7,5 +7,5 @@ This project is downloaded from [Overleaf](https://www.overleaf.com/latex/templa
 To clean this project, run the following
 
 ```bash
-python -m latex_tools.main --input=examples_preprints --output=examples_preprints_cleaned --tex=template.tex
+python -m latex_tools.main --input=example_preprints --output=example_preprints_cleaned --tex=template.tex
 ```

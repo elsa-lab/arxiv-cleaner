@@ -5,18 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "main (example_project)",
+            "name": "main (example_elsa)",
             "type": "python",
             "request": "launch",
             "module": "latex_tools.main",
             "console": "integratedTerminal",
             "args": [
                 "--input",
-                "example_project",
+                "example_elsa",
                 "--output",
-                "cleaned_project",
+                "example_elsa_cleaned",
                 "--tex",
                 "main.tex,sup.tex",
+                "--verbose"
+            ]
+        },
+        {
+            "name": "main (example_preprints)",
+            "type": "python",
+            "request": "launch",
+            "module": "latex_tools.main",
+            "console": "integratedTerminal",
+            "args": [
+                "--input",
+                "example_preprints",
+                "--output",
+                "example_preprints_cleaned",
+                "--tex",
+                "template.tex",
                 "--verbose"
             ]
         }

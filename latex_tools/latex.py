@@ -1,4 +1,5 @@
 import re
+import subprocess
 
 from latex_tools.cli import run_command, check_command_results
 from latex_tools.file_utils import (
@@ -47,7 +48,7 @@ class LatexRunner:
 
         # Run the command
         return_code, stdout, stderr = run_command(
-            command, stdout=None, stderr=None, cwd=root_dir)
+            command, stdout=subprocess.DEVNULL, stderr=None, cwd=root_dir)
 
         # Check return code and STDERR
         check_command_results(command, return_code, stdout, stderr)

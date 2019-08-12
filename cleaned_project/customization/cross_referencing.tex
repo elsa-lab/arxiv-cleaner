@@ -1,0 +1,45 @@
+
+
+
+
+
+
+\usepackage[user,xr]{zref}
+
+
+
+
+
+\ifdef{\zxrsetup}{
+
+
+
+
+
+
+\ifbool{draftmode}{
+}{
+
+
+
+
+        \IfFileExists{main.tex}{
+
+
+            \IfFileExists{sup.tex}{
+
+
+\zexternaldocument*[main:]{main}
+
+\zexternaldocument*[sup:]{sup}
+
+            }{
+}
+
+        }{
+}
+
+    }
+
+}{
+}

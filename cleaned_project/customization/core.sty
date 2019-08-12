@@ -1,0 +1,120 @@
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{customization/core}[2019/08/08 Customization core package (example for latex-tools)]
+
+
+
+
+
+\RequirePackage{atbegshi}
+
+
+
+
+
+\RequirePackage{etoolbox}
+
+
+
+
+
+\RequirePackage{tikz}
+
+
+
+
+
+\newbool{draftmode}
+
+\boolfalse{draftmode}
+
+
+
+\DeclareOption{draft}{
+    \booltrue{draftmode}
+}
+
+
+
+\ProcessOptions\relax
+
+
+
+\ifbool{draftmode}{
+
+
+
+
+    \PackageWarning{customization/core.sty}{Draft mode is on.}
+
+
+
+
+
+    \AtBeginShipout{
+        \AtBeginShipoutAddToBox{
+            \begin{tikzpicture}[overlay,remember picture]
+            \node[anchor=north,font=\Huge,text=red!25] at (current page.north) {Draft Mode};
+            \end{tikzpicture}
+        }
+    }
+
+}{
+}
+
+
+
+
+
+\usepackage{algorithm}
+ \usepackage{appendix}
+ 
+
+
+
+
+
+\usepackage[user,xr]{zref}
+
+
+
+
+
+\ifdef{\zxrsetup}{
+
+
+
+
+
+
+\ifbool{draftmode}{
+}{
+
+
+
+
+        \IfFileExists{main.tex}{
+
+
+            \IfFileExists{sup.tex}{
+
+
+\zexternaldocument*[main:]{main}
+
+\zexternaldocument*[sup:]{sup}
+
+            }{
+}
+
+        }{
+}
+
+    }
+
+}{
+}
+ \usepackage[
+    labelformat=simple
+]{subcaption}
+ 

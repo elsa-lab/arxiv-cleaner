@@ -45,6 +45,17 @@ def calc_file_hash(path):
     return hasher.hexdigest()
 
 
+def change_extension(path, ext):
+    # Build the path object
+    path_obj = Path(path)
+
+    # Change the suffix
+    path_obj = path_obj.with_suffix(ext)
+
+    # Return the updated path
+    return str(path_obj)
+
+
 def combine_paths(*paths):
     # Build the path object
     path_obj = Path(*paths)
@@ -59,6 +70,29 @@ def convert_paths_to_unix_style(paths):
 
 def copy_file(src, dst):
     shutil.copyfile(src, dst)
+
+
+def copy_files(relative_paths, src_dir, dst_dir, skip_nonexistent=False):
+    # Copy each file from the source to destination directory
+    for relative_path in relative_paths:
+        # Build the source path
+        src_path = combine_paths(src_dir, relative_path)
+
+        # Check whether to skip nonexistent source file
+        if skip_nonexistent:
+            # Check whether the source file doesn't exist
+            if not does_file_exist(src_path):
+                # Skip the copying
+                continue
+
+        # Build the destination path
+        dst_path = combine_paths(dst_dir, relative_path)
+
+        # Ensure the destination directory exists
+        ensure_path_exist(dst_path)
+
+        # Copy the input file to the destination
+        copy_file(src_path, dst_path)
 
 
 def create_temp_dir(name=''):
@@ -114,27 +148,41 @@ def ensure_path_exist(path):
     parent_obj = path_obj.parent
 
     # Make sure the parent directory exists
-    parent_obj.mkdir(exist_ok=True)
+    parent_obj.mkdir(parents=True, exist_ok=True)
 
 
-def find_files(path, extension=None, recursive=True):
+def find_files(path, extensions=[None], recursive=True):
     # Build the path object
     path_obj = Path(path)
 
-    # Build the extension pattern
-    if extension is None:
-        extension_pattern = '*'
-    else:
-        extension_pattern = '*.{}'.format(extension)
+    # Initialize all the found files
+    all_found_files = []
 
-    # Build the pattern
-    pattern = '**/{}'.format(extension_pattern)
+    # Find files for each extension
+    for extension in extensions:
+        # Build the extension pattern
+        if extension is None:
+            extension_pattern = '*'
+        else:
+            extension_pattern = '*.{}'.format(extension)
 
-    # Find all files
-    found_files = path_obj.glob(pattern)
+        # Build the pattern
+        pattern = '**/{}'.format(extension_pattern)
 
-    # Convert paths to Unix style
-    return convert_paths_to_unix_style(found_files)
+        # Find all files and directories
+        found_files = path_obj.glob(pattern)
+
+        # Filter only files
+        found_files = filter(lambda f: f.is_file(), found_files)
+
+        # Convert paths to Unix style
+        found_files = convert_paths_to_unix_style(found_files)
+
+        # Add the found files to the list
+        all_found_files.extend(found_files)
+
+    # Return all the found files
+    return all_found_files
 
 
 def remove_temp_dir(dir_obj):

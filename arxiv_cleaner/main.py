@@ -29,6 +29,9 @@ def main():
     # Run the cleaner
     cleaner.clean()
 
+    # Print the finish message
+    print('Done')
+
 
 if __name__ == '__main__':
     main()

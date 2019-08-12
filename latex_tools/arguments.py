@@ -8,16 +8,23 @@ def parse_args():
 
     # Directories
     parser.add_argument('--input', type=str, required=True,
-                        help='Input directory')
+                        help='input directory')
     parser.add_argument('--output', type=str, required=True,
-                        help='Output directory')
-    # Paths
+                        help='output directory')
+    # Targets
     parser.add_argument('--keep', type=str, required=True,
                         help=('TEX Files to keep (Comma-sepearted paths,' +
                               ' relative to input directory)'))
+    # Commands customization
+    parser.add_argument('--latex_compiler', default='pdflatex', type=str,
+                        help='LaTeX compiler (pdflatex, latex)')
+    parser.add_argument('--latex_extra_args', default='', type=str,
+                        help='extra arguments passed to LaTeX compiler')
+    parser.add_argument('--latexpand_extra_args', default='', type=str,
+                        help='extra arguments passed to latexpand')
     # Logging
     parser.add_argument('--verbose', action='store_true',
-                        help='Turns on verbose logging')
+                        help='turns on verbose logging')
 
     # Parse the arguments
     args = parser.parse_args()

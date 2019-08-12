@@ -1,6 +1,5 @@
 from pathlib import Path
 import hashlib
-import logging
 import shutil
 import tempfile
 
@@ -200,5 +199,5 @@ def remove_temp_file(fp):
     try:
         Path.unlink(path)
     except:
-        logging.warning(
-            'Failed to delete the temporary file "{}"'.format(path))
+        # Ignore the error
+        pass

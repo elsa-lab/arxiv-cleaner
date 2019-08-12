@@ -8,12 +8,13 @@ from latex_tools.logger import Logger
 
 
 class Cleaner:
-    def __init__(self, input_dir=None, output_dir=None, keep=None,
+    def __init__(self, input_dir=None, output_dir=None, tex=None, bib=None,
                  latex_compiler=None, latex_extra_args=None,
                  latexpand_extra_args=None, verbose=False):
         # Save the arguments
         self.input_dir = input_dir
         self.output_dir = output_dir
+        self.bib = bib
         self.verbose = verbose
 
         # Initialize the logger
@@ -22,8 +23,8 @@ class Cleaner:
         # Initialize input files
         self._init_input_files()
 
-        # Initialize files to keep
-        self._init_files_to_keep(keep)
+        # Initialize TEX files
+        self._init_tex_files(tex)
 
         # Initialize the latex runner
         self._init_latex_runner(
@@ -45,7 +46,7 @@ class Cleaner:
         # Copy the expanded files to the temporary project directory
         self.copy_expanded_files_to_project(expanded_dir, project_dir)
 
-        # Find the dependencies of the files to keep
+        # Find the dependencies of the TEX files
         project_deps = self.find_project_dependencies(project_dir)
 
         # Copy the dependency files to the output directory
@@ -148,7 +149,7 @@ class Cleaner:
         self.logger.info('Start copying files to temporary project')
 
         # Copy the files from the expanded directory to project directory
-        copy_files(self.files_to_keep, expanded_dir, project_dir)
+        copy_files(self.tex_files, expanded_dir, project_dir)
 
     def find_project_dependencies(self, project_dir):
         # Log the start
@@ -160,10 +161,10 @@ class Cleaner:
         # Initialize the project dependencies
         project_deps = set()
 
-        # Find dependencies for each file to keep
-        for file_to_keep in self.files_to_keep:
+        # Find dependencies for each TEX file
+        for tex_file in self.tex_files:
             # Build the full path
-            full_path = combine_paths(project_dir, file_to_keep)
+            full_path = combine_paths(project_dir, tex_file)
 
             # Run the latex compiler to read the dependencies
             fls_deps = self.latex_runner.run_compiler(project_dir, full_path)
@@ -194,7 +195,7 @@ class Cleaner:
                    self.output_dir, skip_nonexistent=True)
 
         # Copy the files from the expanded directory to output directory
-        copy_files(self.files_to_keep, expanded_dir, self.output_dir)
+        copy_files(self.tex_files, expanded_dir, self.output_dir)
 
     def calc_files_hashes(self, files, root_dir):
         # Build relative paths
@@ -224,12 +225,12 @@ class Cleaner:
         self.relative_input_paths = [build_relative_path(
             f, self.input_dir) for f in self.input_files]
 
-    def _init_files_to_keep(self, keep):
-        # Parse the files to keep and save
-        self.files_to_keep = keep.split(',')
+    def _init_tex_files(self, tex):
+        # Parse the TEX files and save
+        self.tex_files = tex.split(',')
 
-        # Check whether the files to keep exist
-        self._check_files_to_keep()
+        # Check whether the TEX files exist
+        self._check_tex_files()
 
     def _init_latex_runner(
             self, latex_compiler, latex_extra_args, latexpand_extra_args):
@@ -237,17 +238,17 @@ class Cleaner:
         self.latex_runner = LatexRunner(
             latex_compiler, latex_extra_args, latexpand_extra_args)
 
-    def _check_files_to_keep(self):
-        # Check each file to keep
-        for file_to_keep in self.files_to_keep:
+    def _check_tex_files(self):
+        # Check each TEX file
+        for tex_file in self.tex_files:
             # Build the full path
-            full_path = combine_paths(self.input_dir, file_to_keep)
+            full_path = combine_paths(self.input_dir, tex_file)
 
             # Check whether the file exists
             if not does_file_exist(full_path):
-                raise ValueError(('File to keep "{}" does not exist in the' +
-                                  ' input directory "{}"').format(
-                    file_to_keep, self.input_dir))
+                raise ValueError(('TEX file "{}" does not exist in the input' +
+                                  ' directory "{}"').format(
+                    tex_file, self.input_dir))
 
 
 def main():
@@ -256,7 +257,8 @@ def main():
 
     # Create the cleaner
     cleaner = Cleaner(input_dir=args.input, output_dir=args.output,
-                      keep=args.keep, latex_compiler=args.latex_compiler,
+                      tex=args.tex, bib=args.bib,
+                      latex_compiler=args.latex_compiler,
                       latex_extra_args=args.latex_extra_args,
                       latexpand_extra_args=args.latexpand_extra_args,
                       verbose=args.verbose)

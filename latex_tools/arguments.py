@@ -12,9 +12,12 @@ def parse_args():
     parser.add_argument('--output', type=str, required=True,
                         help='output directory')
     # Targets
-    parser.add_argument('--keep', type=str, required=True,
+    parser.add_argument('--tex', type=str, required=True,
                         help=('TEX Files to keep (Comma-sepearted paths,' +
                               ' relative to input directory)'))
+    parser.add_argument('--bib', type=str,
+                        help=('BIB file to expand (Relative to input' +
+                              ' directory)'))
     # Commands customization
     parser.add_argument('--latex_compiler', default='pdflatex', type=str,
                         help='LaTeX compiler (pdflatex, latex)')

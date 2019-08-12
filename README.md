@@ -32,6 +32,8 @@ Specify the input directory containing the LaTeX project, the output directory a
 python -m arxiv_cleaner.main --input=<Input directory> --output=<Output directory> --tex=<TEX files to keep>
 ```
 
+Tex files (`.tex`, `.cls`, `.clo`, `.sty`, `.bst`) required by the TEX files to keep will be cleaned and copied to the output directory. Other files (e.g., images) required by the TEX files to keep will be copied to the output directory.
+
 ## Examples
 
 Try cleaning the example project as follows
@@ -39,6 +41,8 @@ Try cleaning the example project as follows
 ```bash
 python -m arxiv_cleaner.main --input=examples_elsa --output=examples_elsa_cleaned --tex=main.tex,sup.tex
 ```
+
+See other directories (`example_aaai`, `example_ieee`, ...) for more examples.
 
 ## References
 

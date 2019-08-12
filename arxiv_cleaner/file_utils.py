@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import shutil
 import tempfile
 
@@ -171,3 +172,20 @@ def remove_temp_file(fp):
     except:
         # Ignore the error
         pass
+
+
+def remove_unnecessary_blank_lines(path):
+    # Read the content
+    with open(path, 'r', encoding='utf-8') as fp:
+        content = fp.read()
+
+    # Remove unnecessary blank lines
+    # Reference: https://stackoverflow.com/a/28902081
+    cleaned_content = re.sub(r'\n\s*\n', '\n\n', content)
+
+    # Remove also the starting blank lines
+    cleaned_content = re.sub(r'^\s*\n', '', cleaned_content)
+
+    # Save the content
+    with open(path, 'w', encoding='utf-8') as fp:
+        fp.write(cleaned_content)

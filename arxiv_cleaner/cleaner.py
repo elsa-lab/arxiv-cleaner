@@ -1,6 +1,7 @@
 from arxiv_cleaner.file_utils import (
     build_relative_path, combine_paths, copy_files, create_temp_dir,
-    does_file_exist, find_files, remove_temp_dir)
+    does_file_exist, find_files, remove_temp_dir,
+    remove_unnecessary_blank_lines)
 from arxiv_cleaner.latex import LatexRunner
 from arxiv_cleaner.logger import Logger
 
@@ -61,6 +62,9 @@ class Cleaner:
         # Copy the BBL dependencies to the output directory
         self.copy_bbl_files_to_output(bbl_deps, project_dir)
 
+        # Remove unnecessary blank lines
+        self.remove_unnecessary_blank_lines()
+
         # Remove the temporary expanded directory
         remove_temp_dir(expanded_dir_obj)
 
@@ -77,8 +81,7 @@ class Cleaner:
 
     def expand_files(self):
         # Log the start
-        self.logger.info('Start expanding files in the directory "{}"'.format(
-            self.input_dir))
+        self.logger.info('Start expanding files in input directory')
 
         # Initialize the extensions
         # Reference: https://tex.stackexchange.com/a/424669
@@ -194,6 +197,22 @@ class Cleaner:
 
         # Copy the files from the project directory to output directory
         copy_files(bbl_deps, project_dir, self.output_dir)
+
+    def remove_unnecessary_blank_lines(self):
+        # Log the start
+        self.logger.info(
+            'Start removing unnecessary blank lines in output directory')
+
+        # Initialize the extensions
+        # Reference: https://tex.stackexchange.com/a/424669
+        extensions = ['tex', 'cls', 'clo', 'sty', 'bst']
+
+        # Find all target files in the input directory
+        target_files = find_files(self.output_dir, extensions=extensions)
+
+        # Remove for each target file
+        for target_file in target_files:
+            remove_unnecessary_blank_lines(target_file)
 
     ############################################################################
     # Initialization

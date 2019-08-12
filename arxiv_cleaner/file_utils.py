@@ -1,5 +1,4 @@
 from pathlib import Path
-import hashlib
 import shutil
 import tempfile
 
@@ -13,35 +12,6 @@ def build_relative_path(path, relative_to_path):
 
     # Return the relative path
     return relative_path_obj.as_posix()
-
-
-def calc_file_hash(path):
-    """
-    References:
-    https://www.pythoncentral.io/hashing-files-with-python/
-    https://stackoverflow.com/a/1131255
-    """
-    # Set the block size
-    block_size = 2 ** 15
-
-    # Build a hasher
-    hasher = hashlib.md5()
-
-    # Open the file in binary mode
-    with open(path, 'rb') as fp:
-        while True:
-            # Read a segment
-            buf = fp.read(block_size)
-
-            # Check whether there are no contents any more
-            if not buf:
-                break
-
-            # Update the hasher with the segment
-            hasher.update(buf)
-
-    # Return the hash
-    return hasher.hexdigest()
 
 
 def change_extension(path, ext):

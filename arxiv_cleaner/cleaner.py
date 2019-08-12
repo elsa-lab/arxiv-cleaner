@@ -1,6 +1,6 @@
 from arxiv_cleaner.file_utils import (
-    build_relative_path, calc_file_hash, combine_paths, copy_files,
-    create_temp_dir, does_file_exist, find_files, remove_temp_dir)
+    build_relative_path, combine_paths, copy_files, create_temp_dir,
+    does_file_exist, find_files, remove_temp_dir)
 from arxiv_cleaner.latex import LatexRunner
 from arxiv_cleaner.logger import Logger
 
@@ -84,54 +84,12 @@ class Cleaner:
         # Reference: https://tex.stackexchange.com/a/424669
         extensions = ['tex', 'cls', 'clo', 'sty', 'bst']
 
-        # Initialize the old directory
-        old_dir = self.input_dir
+        # Find all target files in the input directory
+        target_files = find_files(self.input_dir, extensions=extensions)
 
-        # Initialize the old directory object
-        old_dir_obj = None
-
-        # Find all TEX files in the input directory and set it as old TEX files
-        old_tex_files = find_files(self.input_dir, extensions=extensions)
-
-        # Calculate hashes of all old TEX files
-        old_hashes = self.calc_files_hashes(old_tex_files, old_dir)
-
-        # Keep expanding files until the file contents have no changes
-        has_changes = True
-        round_idx = 0
-
-        while has_changes:
-            # Run latexpand and produce new TEX files in the new temporary
-            # directory
-            new_dir_obj, new_dir = self.latex_runner.run_latexpand(
-                old_dir, old_tex_files)
-
-            # Log the new directory
-            self.logger.info(('Round #{}: Use latexpand to produce new TEX' +
-                              ' files to directory "{}"').format(
-                                  round_idx, new_dir))
-
-            # Find all TEX files in the new directory
-            new_tex_files = find_files(new_dir, extensions=extensions)
-
-            # Calculate hashes of all new TEX files
-            new_hashes = self.calc_files_hashes(new_tex_files, new_dir)
-
-            # Check whether the old and new hashes are the same
-            has_changes = (old_hashes != new_hashes)
-
-            # Remove the old directory if it's temporary directory
-            if old_dir_obj is not None:
-                remove_temp_dir(old_dir_obj)
-
-            # Update the old states
-            old_dir = new_dir
-            old_dir_obj = new_dir_obj
-            old_tex_files = new_tex_files
-            old_hashes = new_hashes
-
-            # Increment the round index
-            round_idx += 1
+        # Run latexpand and produce new files in the new temporary directory
+        new_dir_obj, new_dir = self.latex_runner.run_latexpand(
+            self.input_dir, target_files)
 
         # Return the final directory object and path
         return new_dir_obj, new_dir
@@ -236,19 +194,6 @@ class Cleaner:
 
         # Copy the files from the project directory to output directory
         copy_files(bbl_deps, project_dir, self.output_dir)
-
-    ############################################################################
-    # Calculation
-    ############################################################################
-
-    def calc_files_hashes(self, files, root_dir):
-        # Build relative paths
-        relative_paths = [build_relative_path(
-            path, root_dir) for path in files]
-
-        # Calculate file hashes and return
-        return {relative_path: calc_file_hash(path)
-                for path, relative_path in zip(files, relative_paths)}
 
     ############################################################################
     # Initialization

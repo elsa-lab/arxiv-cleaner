@@ -42,9 +42,9 @@ class LatexRunner:
         # Return the temporary directory object and path
         return temp_dir_obj, temp_dir
 
-    def run_pdflatex(self, root_dir, tex_file):
-        # Build the command to run pdflatex
-        command = self._build_pdflatex_command(tex_file)
+    def run_compiler(self, root_dir, tex_file):
+        # Build the command to run the compiler
+        command = self._build_compiler_command(tex_file)
 
         # Run the command
         return_code, stdout, stderr = run_command(
@@ -96,7 +96,7 @@ class LatexRunner:
             '"{}"'.format(input_path),
         ])
 
-    def _build_pdflatex_command(self, tex_file):
+    def _build_compiler_command(self, tex_file):
         # Build the command and return
         return ' '.join([
             self.latex_compiler,

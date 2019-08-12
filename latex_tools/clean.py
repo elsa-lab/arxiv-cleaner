@@ -165,8 +165,8 @@ class Cleaner:
             # Build the full path
             full_path = combine_paths(project_dir, file_to_keep)
 
-            # Run pdflatex to read the dependencies
-            fls_deps = self.latex_runner.run_pdflatex(project_dir, full_path)
+            # Run the latex compiler to read the dependencies
+            fls_deps = self.latex_runner.run_compiler(project_dir, full_path)
 
             # Find the dependencies in the input directory
             deps = fls_deps.intersection(relative_input_paths)

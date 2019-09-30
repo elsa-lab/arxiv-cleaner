@@ -40,7 +40,7 @@ Text files (`.tex`, `.cls`, `.clo`, `.sty`, `.bst`) required by the TEX files to
 Try cleaning the example project as follows
 
 ```bash
-python -m arxiv_cleaner.main --input=examples_elsa --output=examples_elsa_cleaned --tex=main.tex,sup.tex
+python -m arxiv_cleaner.main --input=example_elsa --output=example_elsa_cleaned --tex=main.tex,sup.tex
 ```
 
 See other directories (`example_aaai`, `example_ieee`, ...) for more examples.

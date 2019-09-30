@@ -1,11 +1,15 @@
+import shlex
 import subprocess
 
 
 def run_command(command, stdout=None, stderr=None, cwd=None):
+    # Split the command into a sequence of arguments
+    args = shlex.split(command)
+
     try:
         # Run the command
         p_obj = subprocess.Popen(
-            command, stdout=stdout, stderr=stderr, cwd=cwd)
+            args, stdout=stdout, stderr=stderr, cwd=cwd)
 
         # Wait the process to finish
         p_obj.wait()
